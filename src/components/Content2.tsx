@@ -90,8 +90,6 @@ const Content2 = () => {
         // 애니메이션이 실행되는 순간
         // 1. 인덱스 바
         const imageCount = Math.ceil(imageArray.length / 2);
-        const nextAnimationImageIdx =
-            type === "prev" ? activeImageIdx : type === "next" ? activeImageIdx + 2 : type + 1;
         const nextImageIdx =
             type === "prev"
                 ? (activeImageIdx + 2) % imageCount
@@ -100,6 +98,8 @@ const Content2 = () => {
                 : type;
         setActiveImageIdx(nextImageIdx);
         // 2. 오른쪽으로 width + gap만큼 움직임 (transition 적용)
+        const nextAnimationImageIdx =
+            type === "prev" ? activeImageIdx : type === "next" ? activeImageIdx + 2 : type + 1;
         const imageArrayWrap = document.querySelector("#image_array_wrap")!! as HTMLUListElement;
         imageArrayWrap.style.transition = "transform 0.3s";
         imageArrayWrap.style.transform = `translateX(calc(-${nextAnimationImageIdx * 100}% - ${
