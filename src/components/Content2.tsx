@@ -86,32 +86,51 @@ const Content2 = () => {
             ),
         },
     ];
-    const imageSwipeAnimation = (nextImageIdx?: number) => {
+    const imageSwipeAnimation = (type: "prev" | "next" | number) => {
         // 애니메이션이 실행되는 순간
-        // 1. 인덱스 바뀜
+        // 1. 인덱스 바
         const imageCount = Math.ceil(imageArray.length / 2);
-        nextImageIdx = nextImageIdx ?? (activeImageIdx + 1) % imageCount;
+        const nextAnimationImageIdx =
+            type === "prev" ? activeImageIdx : type === "next" ? activeImageIdx + 2 : type + 1;
+        const nextImageIdx =
+            type === "prev"
+                ? (activeImageIdx + 2) % imageCount
+                : type === "next"
+                ? (activeImageIdx + 1) % imageCount
+                : type;
         setActiveImageIdx(nextImageIdx);
         // 2. 오른쪽으로 width + gap만큼 움직임 (transition 적용)
         const imageArrayWrap = document.querySelector("#image_array_wrap")!! as HTMLUListElement;
-        imageArrayWrap.style.transform = `translateX(calc(-${(activeImageIdx + 2) * 100}% - ${
-            (activeImageIdx + 2) * 10
-        }px))`;
-
-        // 3. 움직임이 끝난 뒤 opacity값이 바뀜, 위치를 인덱스 + 1 * (width + gap) 만큼 움직임 (transition 적용안함)
-        Array.from(imageArrayWrap.children).forEach((li: any, liIdx) => {
-            if (activeImageIdx + 1 === liIdx) {
-                li.style.opacity = 1;
-            } else {
-                li.style.opacity = 0;
-            }
-        });
-        imageArrayWrap.style.transform = `translateX(calc(-${(nextImageIdx + 1) * 100}% - ${
-            (nextImageIdx + 1) * 10
+        imageArrayWrap.style.transition = "transform 0.3s";
+        imageArrayWrap.style.transform = `translateX(calc(-${nextAnimationImageIdx * 100}% - ${
+            nextAnimationImageIdx * 10
         }px))`;
     };
 
-    useEffect(() => {}, [activeImageIdx]);
+    useEffect(() => {
+        // // 3. 움직임이 끝난 뒤 opacity값이 바뀜, 위치를 인덱스 + 1 * (width + gap) 만큼 움직임 (transition 적용안함)
+        setTimeout(() => {
+            const imageArrayWrap = document.querySelector("#image_array_wrap")!! as HTMLUListElement;
+            Array.from(imageArrayWrap.children).forEach((li: any, liIdx) => {
+                if (activeImageIdx + 1 === liIdx) {
+                    li.style.opacity = 1;
+                } else {
+                    li.style.opacity = 0.5;
+                }
+            });
+            imageArrayWrap.style.transition = "none";
+            imageArrayWrap.style.transform = `translateX(calc(-${(activeImageIdx + 1) * 100}% - ${
+                (activeImageIdx + 1) * 10
+            }px))`;
+        }, 300);
+    }, [activeImageIdx]);
+
+    useEffect(() => {
+        const li = document.querySelector("#notice_array_wrap")!!.children[activeNoticeIdx] as HTMLLIElement;
+        li.style.transition = "top 0.3s";
+        li.style.top = "-2px";
+    }, [activeNoticeIdx]);
+
     const textRotateAnimation = () => {
         Array.from(document.querySelector("#notice_array_wrap")!!.children).forEach((li: any, liIdx) => {
             if (liIdx !== activeNoticeIdx) {
@@ -122,12 +141,6 @@ const Content2 = () => {
         });
         setActiveNoticeIdx((activeNoticeIdx + 1) % noticeArray.length);
     };
-
-    useEffect(() => {
-        const li = document.querySelector("#notice_array_wrap")!!.children[activeNoticeIdx] as HTMLLIElement;
-        li.style.transition = "top 0.3s";
-        li.style.top = "-2px";
-    }, [activeNoticeIdx]);
 
     useEffect(() => {
         clearInterval(inerval.current);
@@ -279,14 +292,20 @@ const Content2 = () => {
                             );
                         })}
                     </ul>
-                    <div className=" absolute top-[40%] left-[-100px] w-[59px] h-[59px] border-[1px] rounded-full border-[#111111] flex flex-col items-center justify-center"
-                    onClick={() => {
-                        console.log(123)
-                    }}
+                    <div
+                        className=" absolute top-[40%] left-[-100px] w-[59px] h-[59px] border-[1px] rounded-full border-[#111111] flex flex-col items-center justify-center cursor-pointer"
+                        onClick={() => {
+                            imageSwipeAnimation("prev");
+                        }}
                     >
                         <Image src="/images/arrow_left_on.png" alt="arrow_left_on" width={15} height={26} />
                     </div>
-                    <div className=" absolute top-[40%] right-[-100px] w-[59px] h-[59px] border-[1px] rounded-full border-[#111111] flex flex-col items-center justify-center">
+                    <div
+                        className=" absolute top-[40%] right-[-100px] w-[59px] h-[59px] border-[1px] rounded-full border-[#111111] flex flex-col items-center justify-center cursor-pointer"
+                        onClick={() => {
+                            imageSwipeAnimation("next");
+                        }}
+                    >
                         <Image src="/images/arrow_right_on.png" alt="arrow_right_on" width={15} height={26} />
                     </div>
                 </div>
@@ -306,25 +325,30 @@ const Content2 = () => {
                     {Array(Math.ceil(imageArray.length / 2))
                         .fill(null)
                         .map((_, idx) => {
-                            return activeImageIdx === idx ? (
+                            return (
                                 <div
+                                    key={idx}
                                     className=" min-w-[13px] cursor-pointer"
                                     onClick={() => {
-                                        setActiveImageIdx(idx);
+                                        imageSwipeAnimation(idx);
                                         setplayImageSwipe(false);
                                     }}
                                 >
-                                    <Image src="/images/main_prom_on.png" alt="main_prom_on" width={13} height={12} />
-                                </div>
-                            ) : (
-                                <div
-                                    className=" min-w-[13px] cursor-pointer"
-                                    onClick={() => {
-                                        setActiveImageIdx(idx);
-                                        setplayImageSwipe(false);
-                                    }}
-                                >
-                                    <Image src="/images/main_prom_off.png" alt="main_prom_off" width={13} height={12} />
+                                    {idx === activeImageIdx ? (
+                                        <Image
+                                            src="/images/main_prom_on.png"
+                                            alt="main_prom_on"
+                                            width={13}
+                                            height={12}
+                                        />
+                                    ) : (
+                                        <Image
+                                            src="/images/main_prom_off.png"
+                                            alt="main_prom_off"
+                                            width={13}
+                                            height={12}
+                                        />
+                                    )}
                                 </div>
                             );
                         })}
