@@ -86,7 +86,7 @@ const Content2 = () => {
             ),
         },
     ];
-    const imageSwipeAnimation = (nextImageIdx? : number) => {
+    const imageSwipeAnimation = (nextImageIdx?: number) => {
         // 애니메이션이 실행되는 순간
         // 1. 인덱스 바뀜
         const imageCount = Math.ceil(imageArray.length / 2);
@@ -279,7 +279,10 @@ const Content2 = () => {
                             );
                         })}
                     </ul>
-                    <div className=" absolute top-[40%] left-[-100px] w-[59px] h-[59px] border-[1px] rounded-full border-[#111111] flex flex-col items-center justify-center" 
+                    <div className=" absolute top-[40%] left-[-100px] w-[59px] h-[59px] border-[1px] rounded-full border-[#111111] flex flex-col items-center justify-center"
+                    onClick={() => {
+                        console.log(123)
+                    }}
                     >
                         <Image src="/images/arrow_left_on.png" alt="arrow_left_on" width={15} height={26} />
                     </div>
