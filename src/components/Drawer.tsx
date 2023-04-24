@@ -1,5 +1,5 @@
 "use client";
-import { drawerList, drawerType } from "@/constant/drawer";
+import { drawerList } from "@/constant/drawer";
 import { openDrawerRecoil, windowInnerWidthRecoil } from "@/recoil/states";
 import Image from "next/image";
 import { useEffect } from "react";
@@ -51,7 +51,7 @@ const Drawer = () => {
                                     placeholder="검색어를 입력하세요."
                                 />
                             </div>
-                            <button className=" text-[14px] w-[70px] h-[30px] bg-[#666666] rounded-sm flex items-center justify-center text-white">
+                            <button className="text-[14px] w-[70px] h-[30px] bg-[#666666] rounded-sm flex items-center justify-center text-white">
                                 Search
                             </button>
                         </div>

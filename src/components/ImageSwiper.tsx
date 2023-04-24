@@ -1,30 +1,25 @@
 "use client";
 
 import { openImageSwiperRecoil, windowInnerWidthRecoil } from "@/recoil/states";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 import Image from "next/image";
-
-interface ImageSwiperOptionType {
-    swiping: boolean;
-    duration: number;
-    autoPlay: boolean;
-    autoPlayDelay: number;
-}
 
 const ImageSwiper = () => {
     const windowInnerWidth = useRecoilValue(windowInnerWidthRecoil);
     const openImageSwiper = useRecoilValue(openImageSwiperRecoil);
 
     // about swiper ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    const [playImageSwipe, setplayImageSwipe] = useState<boolean>(true);
+    const imageSwiperSetInterval = useRef<any>(null);
     const [activeImageIdx, setActiveImageIdx] = useState<number>(0);
-    const [imageSwipeOption, setImageSwipeOption] = useState<ImageSwiperOptionType>({
-        swiping: false,
-        duration: 300,
-        autoPlay: false,
-        autoPlayDelay: 3000,
-    });
+    const [swiping, setSwiping] = useState(false);
+    const [autoPlay, setAutoPlay] = useState(false);
+    const imageSwipeOption = {
+        duration: 500,
+        autoPlayDelay: 2000,
+        imageWidth: windowInnerWidth > 960 ? 819 : Math.min(500, windowInnerWidth),
+        imageGap: 10,
+    };
 
     const imageArray = [
         {
@@ -33,8 +28,10 @@ const ImageSwiper = () => {
                 <Image
                     src="/images/FbOy46_20230102123439782.jpg"
                     alt="FbOy46_20230102123439782"
-                    width={819}
-                    height={553}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="w-full"
                 />
             ),
         },
@@ -44,8 +41,10 @@ const ImageSwiper = () => {
                 <Image
                     src="/images/8akpfI_20230320084449571.jpg"
                     alt="8akpfI_20230320084449571"
-                    width={819}
-                    height={553}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="w-full"
                 />
             ),
         },
@@ -55,8 +54,10 @@ const ImageSwiper = () => {
                 <Image
                     src="/images/uCaICb_20230209082722973.jpg"
                     alt="uCaICb_20230209082722973"
-                    width={819}
-                    height={553}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="w-full"
                 />
             ),
         },
@@ -66,8 +67,10 @@ const ImageSwiper = () => {
                 <Image
                     src="/images/FbOy46_20230102123439782.jpg"
                     alt="FbOy46_20230102123439782"
-                    width={819}
-                    height={553}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="w-full"
                 />
             ),
         },
@@ -77,19 +80,14 @@ const ImageSwiper = () => {
                 <Image
                     src="/images/8akpfI_20230320084449571.jpg"
                     alt="8akpfI_20230320084449571"
-                    width={819}
-                    height={553}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="w-full"
                 />
             ),
         },
     ];
-
-    const changeImageSwipeOption = (
-        key: "swiping" | "duration" | "autoplay" | "autoPlayDelay",
-        value: boolean | number | string
-    ) => {
-        setImageSwipeOption({ ...imageSwipeOption, [key]: value });
-    };
 
     const calcNextActiveImageIdx = (type: "prev" | "next" | number) => {
         const imageCount = Math.ceil(imageArray.length / 2);
@@ -103,13 +101,17 @@ const ImageSwiper = () => {
     };
 
     const imageSwipeAnimation = (type: "prev" | "next" | number) => {
+        const { duration, imageWidth, imageGap } = imageSwipeOption;
         const animateToImageIdx = type === "prev" ? activeImageIdx : type === "next" ? activeImageIdx + 2 : type + 1;
         const imageArrayWrap = document.querySelector("#image_array_wrap")!! as HTMLUListElement;
-        imageArrayWrap.style.transition = `transform ${imageSwipeOption.duration}ms`;
-        imageArrayWrap.style.transform = `translateX(calc(-${animateToImageIdx * 100}% - ${animateToImageIdx * 10}px))`;
+        imageArrayWrap.style.transition = `transform ${duration}ms`;
+        imageArrayWrap.style.transform = `translateX(calc(-${imageWidth * animateToImageIdx}px - ${
+            imageGap * animateToImageIdx
+        }px + ${windowInnerWidth > 960 ? "0px" : windowInnerWidth > 500 ? "60px" : "0px"}))`;
     };
 
     const changeImageOpacityAndImageWrapTranslateX = (activeImageIdx: number) => {
+        const { imageWidth, imageGap } = imageSwipeOption;
         const imageArrayWrap = document.querySelector("#image_array_wrap")!! as HTMLUListElement;
         Array.from(imageArrayWrap.children).forEach((li: any, liIdx) => {
             if (activeImageIdx + 1 === liIdx) {
@@ -119,13 +121,25 @@ const ImageSwiper = () => {
             }
         });
         imageArrayWrap.style.transition = "none";
-        imageArrayWrap.style.transform = `translateX(calc(-${(activeImageIdx + 1) * 100}% - ${
-            (activeImageIdx + 1) * 10
-        }px))`;
+        imageArrayWrap.style.transform = `translateX(calc(-${imageWidth * (activeImageIdx + 1)}px - ${
+            imageGap * (activeImageIdx + 1)
+        }px + ${
+            windowInnerWidth > 960
+                ? "0px"
+                : windowInnerWidth > 620
+                ? "60px"
+                : windowInnerWidth > 500
+                ? 60 - (620 - windowInnerWidth) / 2 + "px"
+                : "0px"
+        }))`;
     };
 
+    useEffect(() => {
+        changeImageOpacityAndImageWrapTranslateX(activeImageIdx);
+    }, [windowInnerWidth]);
+
     const handleSwipeImage = (type: "prev" | "next" | number) => {
-        changeImageSwipeOption("swiping", true);
+        setSwiping(true);
         // 1. active index 바꾸기
         const nextActiveImageIdx = calcNextActiveImageIdx(type);
         setActiveImageIdx(nextActiveImageIdx);
@@ -134,81 +148,165 @@ const ImageSwiper = () => {
         // 3. 움직임이 끝난 뒤 opacity 변경, translateX 변경 (transition 적용안함)
         setTimeout(() => {
             changeImageOpacityAndImageWrapTranslateX(nextActiveImageIdx);
-            changeImageSwipeOption("swiping", false);
+            setSwiping(false);
         }, imageSwipeOption.duration);
     };
 
     useEffect(() => {
         setActiveImageIdx(0);
         changeImageOpacityAndImageWrapTranslateX(0);
+        setAutoPlay(openImageSwiper);
     }, [!openImageSwiper]);
+
+    useEffect(() => {
+        if (autoPlay) {
+            imageSwiperSetInterval.current = setInterval(
+                () => handleSwipeImage("next"),
+                imageSwipeOption.autoPlayDelay
+            );
+        }
+        return () => {
+            clearInterval(imageSwiperSetInterval.current);
+        };
+    }, [autoPlay, activeImageIdx, windowInnerWidth]);
     // about swiper ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
     return (
-        <>
-            <div className="relative pt-[40px] w-[819px]">
+        <div
+            id="image_list_wrap"
+            className="bg-[#f6f5ef] flex flex-col items-center overflow-hidden duration-300"
+            style={{
+                height:
+                    windowInnerWidth > 960 ? 660 : windowInnerWidth > 375 ? 488 : windowInnerWidth > 320 ? 395 : 350,
+                maxHeight:
+                    openImageSwiper === false
+                        ? 0
+                        : windowInnerWidth > 960
+                        ? 660
+                        : windowInnerWidth > 375
+                        ? 488
+                        : windowInnerWidth > 320
+                        ? 400
+                        : 350,
+            }}
+        >
+            <div
+                className="relative pt-[40px] h-full"
+                style={{
+                    width: windowInnerWidth > 960 ? 819 : "100%",
+                    maxWidth: windowInnerWidth > 960 ? undefined : 620,
+                    overflow: windowInnerWidth > 960 ? "visible" : "hidden",
+                }}
+            >
                 <ul className="flex gap-[10px]" id="image_array_wrap">
                     {imageArray.map((image) => {
                         const { component, id } = image;
                         return (
-                            <li key={id} className="min-w-[819px]">
-                                {component}
+                            <li key={id}>
+                                <div
+                                    style={{ width: windowInnerWidth > 960 ? 819 : Math.min(500, windowInnerWidth) }}
+                                    className="relative"
+                                >
+                                    {component}
+                                    <a
+                                        className="absolute left-[50%] -translate-x-1/2 w-[125px] h-[38px] border-[2px] border-[#222222] rounded-[3px] text-[#222222] text-[14px] text-center leading-[32px]"
+                                        style={{
+                                            bottom: windowInnerWidth > 960 ? 10 : windowInnerWidth > 500 ? -12 : -45,
+                                        }}
+                                    >
+                                        자세히 보기
+                                    </a>
+                                </div>
                             </li>
                         );
                     })}
                 </ul>
                 <div
-                    className=" absolute top-[40%] left-[-100px] w-[59px] h-[59px] border-[1px] rounded-full border-[#111111] flex flex-col items-center justify-center cursor-pointer"
+                    className="absolute border-[1px] rounded-full border-[#111111] flex flex-col items-center justify-center cursor-pointer top-[265px]"
+                    style={{
+                        width: windowInnerWidth > 960 ? 59 : 55,
+                        height: windowInnerWidth > 960 ? 59 : 55,
+                        left: windowInnerWidth > 960 ? -100 : 15,
+                        display: windowInnerWidth > 500 ? "flex" : "none",
+                    }}
                     onClick={() => {
-                        !imageSwipeOption.swiping && handleSwipeImage("prev");
+                        !swiping && handleSwipeImage("prev");
                     }}
                 >
                     <Image src="/images/arrow_left_on.png" alt="arrow_left_on" width={15} height={26} />
                 </div>
                 <div
-                    className=" absolute top-[40%] right-[-100px] w-[59px] h-[59px] border-[1px] rounded-full border-[#111111] flex flex-col items-center justify-center cursor-pointer"
+                    className="absolute border-[1px] rounded-full border-[#111111] flex flex-col items-center justify-center cursor-pointer top-[265px]"
+                    style={{
+                        width: windowInnerWidth > 960 ? 59 : 55,
+                        height: windowInnerWidth > 960 ? 59 : 55,
+                        right: windowInnerWidth > 960 ? -100 : 15,
+                        display: windowInnerWidth > 500 ? "flex" : "none",
+                    }}
                     onClick={() => {
-                        !imageSwipeOption.swiping && handleSwipeImage("next");
+                        !swiping && handleSwipeImage("next");
                     }}
                 >
                     <Image src="/images/arrow_right_on.png" alt="arrow_right_on" width={15} height={26} />
                 </div>
-            </div>
-            <div className="flex items-center gap-3 pt-[20px]">
                 <div
-                    className=" min-w-[9px] cursor-pointer"
-                    onClick={() => {
-                        setplayImageSwipe(!playImageSwipe);
+                    className="flex gap-3 absolute left-[50%] translate-x-[-50%]"
+                    style={{
+                        top:
+                            windowInnerWidth > 960
+                                ? 660 - 50
+                                : windowInnerWidth > 375
+                                ? 488 - 50
+                                : windowInnerWidth > 320
+                                ? 400 - 50
+                                : 350 - 50,
                     }}
                 >
-                    {playImageSwipe ? (
-                        <Image src="/images/main_prom_stop.png" alt="main_prom_stop" width={9} height={12} />
-                    ) : (
-                        <Image src="/images/main_prom_play.png" alt="main_prom_play" width={9} height={12} />
-                    )}
+                    <div
+                        className="min-w-[9px] cursor-pointer"
+                        onClick={() => {
+                            setAutoPlay(!autoPlay);
+                        }}
+                    >
+                        {autoPlay ? (
+                            <Image src="/images/main_prom_stop.png" alt="main_prom_stop" width={9} height={12} />
+                        ) : (
+                            <Image src="/images/main_prom_play.png" alt="main_prom_play" width={9} height={12} />
+                        )}
+                    </div>
+                    {Array(Math.ceil(imageArray.length / 2))
+                        .fill(null)
+                        .map((_, idx) => {
+                            return (
+                                <div
+                                    key={idx}
+                                    className="min-w-[13px] cursor-pointer"
+                                    onClick={() => {
+                                        !swiping && handleSwipeImage(idx);
+                                        !swiping && setAutoPlay(false);
+                                    }}
+                                >
+                                    {idx === activeImageIdx ? (
+                                        <Image
+                                            src="/images/main_prom_on.png"
+                                            alt="main_prom_on"
+                                            width={13}
+                                            height={12}
+                                        />
+                                    ) : (
+                                        <Image
+                                            src="/images/main_prom_off.png"
+                                            alt="main_prom_off"
+                                            width={13}
+                                            height={12}
+                                        />
+                                    )}
+                                </div>
+                            );
+                        })}
                 </div>
-                {Array(Math.ceil(imageArray.length / 2))
-                    .fill(null)
-                    .map((_, idx) => {
-                        return (
-                            <div
-                                key={idx}
-                                className=" min-w-[13px] cursor-pointer"
-                                onClick={() => {
-                                    !imageSwipeOption.swiping && handleSwipeImage(idx);
-                                    !imageSwipeOption.swiping && setplayImageSwipe(false);
-                                }}
-                            >
-                                {idx === activeImageIdx ? (
-                                    <Image src="/images/main_prom_on.png" alt="main_prom_on" width={13} height={12} />
-                                ) : (
-                                    <Image src="/images/main_prom_off.png" alt="main_prom_off" width={13} height={12} />
-                                )}
-                            </div>
-                        );
-                    })}
             </div>
-        </>
+        </div>
     );
 };
 

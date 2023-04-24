@@ -12,14 +12,13 @@ export default function ReactLifeCycleSetting({ children }: Props) {
     const setWindowInnerWidth = useSetRecoilState(windowInnerWidthRecoil);
 
     useEffect(() => {
+        setWindowInnerWidth(window.innerWidth);
         const handleResizeWindow = () => {
             setWindowInnerWidth(window.innerWidth);
         };
         window.addEventListener("resize", handleResizeWindow);
-        window.addEventListener("load", handleResizeWindow);
         return () => {
             window.removeEventListener("resize", handleResizeWindow);
-            window.removeEventListener("load", handleResizeWindow);
         };
     }, []);
 

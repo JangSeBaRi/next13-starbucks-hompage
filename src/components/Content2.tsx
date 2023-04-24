@@ -184,13 +184,7 @@ const Content2 = () => {
                     </div>
                 </div>
             </div>
-            <div
-                id="image_list_wrap"
-                className="h-[660px] bg-[#f6f5ef] flex flex-col items-center overflow-hidden duration-300"
-                style={{ maxHeight: openImageSwiper ? 660 : 0 }}
-            >
-                <ImageSwiper />
-            </div>
+            <ImageSwiper />
         </>
     );
 };

@@ -71,7 +71,7 @@ const OverThan960Header = () => {
                             return (
                                 <li
                                     key={label}
-                                    className=" pt-[10px] px-[20px] h-[66px] text-[13px] text-[#333333] cursor-pointer whitespace-nowrap hover:bg-[#2c2a29] hover:text-[#669900] hover:underline"
+                                    className="pt-[10px] px-[20px] h-[66px] text-[13px] text-[#333333] cursor-pointer whitespace-nowrap hover:bg-[#2c2a29] hover:text-[#669900] hover:underline"
                                     onMouseOver={() => {
                                         setActiveSubGnb(label);
                                         const subGnbMenuWrapEl = document.querySelector(

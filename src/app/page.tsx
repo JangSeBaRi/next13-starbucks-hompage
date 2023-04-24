@@ -4,7 +4,7 @@ import Content2 from "@/components/Content2";
 const Home = () => {
     return (
         <>
-            <Content1 />
+            {/* <Content1 /> */}
             <Content2 />
         </>
     );
