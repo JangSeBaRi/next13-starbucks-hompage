@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { windowInnerWidthRecoil } from "@/recoil/states";
 import Image from "next/image";
@@ -47,7 +47,7 @@ const LessThan960Content1 = () => {
                     className="w-full"
                 />
             </div>
-            <div className="absolute top-[28px] right-[1.8%] w-[25.7%]">
+            <div className="fixed top-[108px] w-[25.7%] right-[1.8%]">
                 <Image
                     src="/images/gq5gfg_20230407112635659.png"
                     alt="gq5gfg_20230407112635659"
@@ -71,6 +71,7 @@ const LessThan960Content1 = () => {
 };
 
 const OverThan960Content1 = () => {
+    const windowInnerWidth = useRecoilValue(windowInnerWidthRecoil);
     return (
         <div className="relative h-[32vw] bg-[url('/images/2023_m_spring2_promotion_bg.jpg')] bg-cover">
             <div className="absolute top-[37%] left-[13.3%] w-[19%]">
@@ -118,7 +119,12 @@ const OverThan960Content1 = () => {
                     className="w-full"
                 />
             </div>
-            <div className="absolute top-[28px] left-[54.5%] w-[45.5%] max-w-[720px] pr-2 flex flex-col items-end z-[11]">
+            <div
+                className="right-[1%] fixed top-[154px] w-[140px] ml-[485px] z-[11]"
+                style={{
+                    left: windowInnerWidth > 1400 ? "54.5%" : "auto",
+                }}
+            >
                 <Image
                     src="/images/gq5gfg_20230407112627089.png"
                     alt="gq5gfg_20230407112627089"

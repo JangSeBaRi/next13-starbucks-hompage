@@ -159,6 +159,7 @@ const ImageSwiper = () => {
     }, [!openImageSwiper]);
 
     useEffect(() => {
+        clearInterval(imageSwiperSetInterval.current);
         if (autoPlay) {
             imageSwiperSetInterval.current = setInterval(
                 () => handleSwipeImage("next"),
@@ -198,7 +199,20 @@ const ImageSwiper = () => {
                     overflow: windowInnerWidth > 960 ? "visible" : "hidden",
                 }}
             >
-                <ul className="flex gap-[10px]" id="image_array_wrap">
+                <ul
+                    className="flex gap-[10px]"
+                    id="image_array_wrap"
+                    onMouseOver={() => clearInterval(imageSwiperSetInterval.current)}
+                    onMouseLeave={() => {
+                        clearInterval(imageSwiperSetInterval.current)
+                        if (autoPlay) {
+                            imageSwiperSetInterval.current = setInterval(
+                                () => handleSwipeImage("next"),
+                                imageSwipeOption.autoPlayDelay
+                            );
+                        }
+                    }}
+                >
                     {imageArray.map((image) => {
                         const { component, id } = image;
                         return (
@@ -209,7 +223,7 @@ const ImageSwiper = () => {
                                 >
                                     {component}
                                     <a
-                                        className="absolute left-[50%] -translate-x-1/2 w-[125px] h-[38px] border-[2px] border-[#222222] rounded-[3px] text-[#222222] text-[14px] text-center leading-[32px]"
+                                        className="absolute left-[50%] -translate-x-1/2 w-[125px] h-[38px] border-[2px] border-[#222222] rounded-[3px] text-[#222222] text-[14px] text-center leading-[32px] hover:bg-[#222222] hover:text-white duration-300 hover:underline cursor-pointer"
                                         style={{
                                             bottom: windowInnerWidth > 960 ? 10 : windowInnerWidth > 500 ? -12 : -45,
                                         }}

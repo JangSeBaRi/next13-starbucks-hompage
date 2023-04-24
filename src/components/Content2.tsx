@@ -128,6 +128,7 @@ const Content2 = () => {
                                                 clearInterval(noticeSetInterval.current);
                                             }}
                                             onMouseLeave={() => {
+                                                clearInterval(noticeSetInterval.current);
                                                 noticeSetInterval.current = setInterval(noticeRotateAnimation, 3000);
                                             }}
                                         >
