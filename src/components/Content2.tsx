@@ -1,17 +1,19 @@
 "use client";
 
-import { windowInnerWidthRecoil } from "@/recoil/states";
+import { openImageSwiperRecoil, windowInnerWidthRecoil } from "@/recoil/states";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import ImageSwiper from "@/components/ImageSwiper";
 
 const Content2 = () => {
-    const inerval = useRef<any>(null);
-    const [activeNoticeIdx, setActiveNoticeIdx] = useState<number>(0);
-    const [playImageSwipe, setplayImageSwipe] = useState<boolean>(true);
-    const [activeImageIdx, setActiveImageIdx] = useState<number>(0);
-    const [openImageListWrap, setOpenImageListWrap] = useState<boolean>(false);
     const windowInnerWidth = useRecoilValue(windowInnerWidthRecoil);
+    const [openImageSwiper, setOpenImageSwiper] = useRecoilState(openImageSwiperRecoil);
+
+    // about notice ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    const noticeSetInterval = useRef<any>(null);
+    const [activeNoticeIdx, setActiveNoticeIdx] = useState<number>(0);
+
     const noticeArray = [
         {
             label: "탄소중립포인트 인센티브 지급 기준 안내",
@@ -29,126 +31,32 @@ const Content2 = () => {
             label: "컨텐츠 하나 더 추가해서 테스트 하기 컨텐츠 하나 더 추가해서 테스트 하기",
         },
     ];
-    const imageArray = [
-        {
-            id: "FbOy46_20230102123439782_copy",
-            component: (
-                <Image
-                    src="/images/FbOy46_20230102123439782.jpg"
-                    alt="FbOy46_20230102123439782"
-                    width={819}
-                    height={553}
-                />
-            ),
-        },
-        {
-            id: "8akpfI_20230320084449571",
-            component: (
-                <Image
-                    src="/images/8akpfI_20230320084449571.jpg"
-                    alt="8akpfI_20230320084449571"
-                    width={819}
-                    height={553}
-                />
-            ),
-        },
-        {
-            id: "uCaICb_20230209082722973",
-            component: (
-                <Image
-                    src="/images/uCaICb_20230209082722973.jpg"
-                    alt="uCaICb_20230209082722973"
-                    width={819}
-                    height={553}
-                />
-            ),
-        },
-        {
-            id: "FbOy46_20230102123439782",
-            component: (
-                <Image
-                    src="/images/FbOy46_20230102123439782.jpg"
-                    alt="FbOy46_20230102123439782"
-                    width={819}
-                    height={553}
-                />
-            ),
-        },
-        {
-            id: "8akpfI_20230320084449571_copy",
-            component: (
-                <Image
-                    src="/images/8akpfI_20230320084449571.jpg"
-                    alt="8akpfI_20230320084449571"
-                    width={819}
-                    height={553}
-                />
-            ),
-        },
-    ];
-    const imageSwipeAnimation = (type: "prev" | "next" | number) => {
-        // 애니메이션이 실행되는 순간
-        // 1. 인덱스 바
-        const imageCount = Math.ceil(imageArray.length / 2);
-        const nextImageIdx =
-            type === "prev"
-                ? (activeImageIdx + 2) % imageCount
-                : type === "next"
-                ? (activeImageIdx + 1) % imageCount
-                : type;
-        setActiveImageIdx(nextImageIdx);
-        // 2. 오른쪽으로 width + gap만큼 움직임 (transition 적용)
-        const nextAnimationImageIdx =
-            type === "prev" ? activeImageIdx : type === "next" ? activeImageIdx + 2 : type + 1;
-        const imageArrayWrap = document.querySelector("#image_array_wrap")!! as HTMLUListElement;
-        imageArrayWrap.style.transition = "transform 0.3s";
-        imageArrayWrap.style.transform = `translateX(calc(-${nextAnimationImageIdx * 100}% - ${
-            nextAnimationImageIdx * 10
-        }px))`;
-    };
 
     useEffect(() => {
-        // // 3. 움직임이 끝난 뒤 opacity값이 바뀜, 위치를 인덱스 + 1 * (width + gap) 만큼 움직임 (transition 적용안함)
-        setTimeout(() => {
-            const imageArrayWrap = document.querySelector("#image_array_wrap")!! as HTMLUListElement;
-            Array.from(imageArrayWrap.children).forEach((li: any, liIdx) => {
-                if (activeImageIdx + 1 === liIdx) {
-                    li.style.opacity = 1;
-                } else {
-                    li.style.opacity = 0.5;
-                }
-            });
-            imageArrayWrap.style.transition = "none";
-            imageArrayWrap.style.transform = `translateX(calc(-${(activeImageIdx + 1) * 100}% - ${
-                (activeImageIdx + 1) * 10
-            }px))`;
-        }, 300);
-    }, [activeImageIdx]);
-
-    useEffect(() => {
-        const li = document.querySelector("#notice_array_wrap")!!.children[activeNoticeIdx] as HTMLLIElement;
-        li.style.transition = "top 0.3s";
-        li.style.top = "-2px";
+        const notice = document.querySelector("#notice_array_wrap")!!.children[activeNoticeIdx] as HTMLLIElement;
+        notice.style.transition = "top 0.3s";
+        notice.style.top = "-2px";
     }, [activeNoticeIdx]);
 
-    const textRotateAnimation = () => {
-        Array.from(document.querySelector("#notice_array_wrap")!!.children).forEach((li: any, liIdx) => {
-            if (liIdx !== activeNoticeIdx) {
-                li.style.top = "20px";
+    const noticeRotateAnimation = () => {
+        Array.from(document.querySelector("#notice_array_wrap")!!.children).forEach((notice: any, noticeIdx) => {
+            if (noticeIdx !== activeNoticeIdx) {
+                notice.style.top = "20px";
             } else {
-                li.style.transition = "none";
+                notice.style.transition = "none";
             }
         });
         setActiveNoticeIdx((activeNoticeIdx + 1) % noticeArray.length);
     };
 
     useEffect(() => {
-        clearInterval(inerval.current);
-        inerval.current = setInterval(textRotateAnimation, 3000);
+        clearInterval(noticeSetInterval.current);
+        noticeSetInterval.current = setInterval(noticeRotateAnimation, 3000);
         return () => {
-            clearInterval(inerval.current);
+            clearInterval(noticeSetInterval.current);
         };
     }, [activeNoticeIdx]);
+    // about notice ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
     return (
         <>
@@ -217,10 +125,10 @@ const Content2 = () => {
                                                 zIndex: noticeIdx === activeNoticeIdx ? 2 : 1,
                                             }}
                                             onMouseOver={() => {
-                                                clearInterval(inerval.current);
+                                                clearInterval(noticeSetInterval.current);
                                             }}
                                             onMouseLeave={() => {
-                                                inerval.current = setInterval(textRotateAnimation, 3000);
+                                                noticeSetInterval.current = setInterval(noticeRotateAnimation, 3000);
                                             }}
                                         >
                                             {label}
@@ -264,10 +172,10 @@ const Content2 = () => {
                             className="min-w-[35px] cursor-pointer"
                             style={windowInnerWidth <= 660 ? { marginLeft: 40 } : { marginLeft: 80 }}
                             onClick={() => {
-                                setOpenImageListWrap(!openImageListWrap);
+                                setOpenImageSwiper(!openImageSwiper);
                             }}
                         >
-                            {openImageListWrap ? (
+                            {openImageSwiper ? (
                                 <Image src="/images/btn_prom_up.png" alt="btn_prom_up" width={35} height={35} />
                             ) : (
                                 <Image src="/images/btn_prom_down.png" alt="btn_prom_down" width={35} height={35} />
@@ -279,80 +187,9 @@ const Content2 = () => {
             <div
                 id="image_list_wrap"
                 className="h-[660px] bg-[#f6f5ef] flex flex-col items-center overflow-hidden duration-300"
-                style={{ maxHeight: openImageListWrap ? 660 : 0 }}
+                style={{ maxHeight: openImageSwiper ? 660 : 0 }}
             >
-                <div className="relative pt-[40px] w-[819px]">
-                    <ul className="flex gap-[10px]" id="image_array_wrap">
-                        {imageArray.map((image) => {
-                            const { component, id } = image;
-                            return (
-                                <li key={id} className="min-w-[819px]">
-                                    {component}
-                                </li>
-                            );
-                        })}
-                    </ul>
-                    <div
-                        className=" absolute top-[40%] left-[-100px] w-[59px] h-[59px] border-[1px] rounded-full border-[#111111] flex flex-col items-center justify-center cursor-pointer"
-                        onClick={() => {
-                            imageSwipeAnimation("prev");
-                        }}
-                    >
-                        <Image src="/images/arrow_left_on.png" alt="arrow_left_on" width={15} height={26} />
-                    </div>
-                    <div
-                        className=" absolute top-[40%] right-[-100px] w-[59px] h-[59px] border-[1px] rounded-full border-[#111111] flex flex-col items-center justify-center cursor-pointer"
-                        onClick={() => {
-                            imageSwipeAnimation("next");
-                        }}
-                    >
-                        <Image src="/images/arrow_right_on.png" alt="arrow_right_on" width={15} height={26} />
-                    </div>
-                </div>
-                <div className="flex items-center gap-3 pt-[20px]">
-                    <div
-                        className=" min-w-[9px] cursor-pointer"
-                        onClick={() => {
-                            setplayImageSwipe(!playImageSwipe);
-                        }}
-                    >
-                        {playImageSwipe ? (
-                            <Image src="/images/main_prom_stop.png" alt="main_prom_stop" width={9} height={12} />
-                        ) : (
-                            <Image src="/images/main_prom_play.png" alt="main_prom_play" width={9} height={12} />
-                        )}
-                    </div>
-                    {Array(Math.ceil(imageArray.length / 2))
-                        .fill(null)
-                        .map((_, idx) => {
-                            return (
-                                <div
-                                    key={idx}
-                                    className=" min-w-[13px] cursor-pointer"
-                                    onClick={() => {
-                                        imageSwipeAnimation(idx);
-                                        setplayImageSwipe(false);
-                                    }}
-                                >
-                                    {idx === activeImageIdx ? (
-                                        <Image
-                                            src="/images/main_prom_on.png"
-                                            alt="main_prom_on"
-                                            width={13}
-                                            height={12}
-                                        />
-                                    ) : (
-                                        <Image
-                                            src="/images/main_prom_off.png"
-                                            alt="main_prom_off"
-                                            width={13}
-                                            height={12}
-                                        />
-                                    )}
-                                </div>
-                            );
-                        })}
-                </div>
+                <ImageSwiper />
             </div>
         </>
     );

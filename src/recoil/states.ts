@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { atom } from "recoil";
 
@@ -12,4 +12,9 @@ const openDrawerRecoil = atom({
     default: false,
 });
 
-export { windowInnerWidthRecoil,openDrawerRecoil };
+const openImageSwiperRecoil = atom({
+    key: "openImageSwiperRecoil",
+    default: false,
+});
+
+export { windowInnerWidthRecoil, openDrawerRecoil, openImageSwiperRecoil };
