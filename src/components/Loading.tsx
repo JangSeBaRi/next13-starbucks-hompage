@@ -56,7 +56,7 @@ const Loading = () => {
     }, []);
     return (
         <div
-            className="absolute z-[9999] w-full h-screen flex flex-col items-center bg-[#1e3932] overflow-hidden"
+            className="absolute z-[9999] w-full h-screen flex flex-col items-center bg-[#1e3932]"
             style={{ opacity: opcityZero ? 0 : 1, transition: "opacity 1s" }}
         >
             <div className="relative mt-[30vh]">
