@@ -21,6 +21,7 @@ const Content5 = () => {
                                 alt="230125_pc_reserve_logo"
                                 width={329}
                                 height={177}
+                                priority={true}
                             />
                         </div>
                         <div className="w-[329px] flex flex-col items-center mt-[39px]">
@@ -36,6 +37,7 @@ const Content5 = () => {
                                 alt="230127_reserve_coffee_bg"
                                 width={2000}
                                 height={400}
+                                priority={true}
                             />
                         </div>
                     </div>
@@ -50,6 +52,7 @@ const Content5 = () => {
                             height={0}
                             sizes="100vw"
                             className="w-full"
+                            priority={true}
                         />
                     </div>
                     <div className="absolute bottom-[10%] left-[50%] -translate-x-1/2">

@@ -32,6 +32,7 @@ const ImageSwiper = () => {
                     height={0}
                     sizes="100vw"
                     className="w-full"
+                    priority={true}
                 />
             ),
         },
@@ -45,6 +46,7 @@ const ImageSwiper = () => {
                     height={0}
                     sizes="100vw"
                     className="w-full"
+                    priority={true}
                 />
             ),
         },
@@ -58,6 +60,7 @@ const ImageSwiper = () => {
                     height={0}
                     sizes="100vw"
                     className="w-full"
+                    priority={true}
                 />
             ),
         },
@@ -71,6 +74,7 @@ const ImageSwiper = () => {
                     height={0}
                     sizes="100vw"
                     className="w-full"
+                    priority={true}
                 />
             ),
         },
@@ -84,6 +88,7 @@ const ImageSwiper = () => {
                     height={0}
                     sizes="100vw"
                     className="w-full"
+                    priority={true}
                 />
             ),
         },
@@ -204,7 +209,7 @@ const ImageSwiper = () => {
                     id="image_array_wrap"
                     onMouseOver={() => clearInterval(imageSwiperSetInterval.current)}
                     onMouseLeave={() => {
-                        clearInterval(imageSwiperSetInterval.current)
+                        clearInterval(imageSwiperSetInterval.current);
                         if (autoPlay) {
                             imageSwiperSetInterval.current = setInterval(
                                 () => handleSwipeImage("next"),
@@ -247,7 +252,13 @@ const ImageSwiper = () => {
                         !swiping && handleSwipeImage("prev");
                     }}
                 >
-                    <Image src="/static/images/arrow_left_on.png" alt="arrow_left_on" width={15} height={26} />
+                    <Image
+                        src="/static/images/arrow_left_on.png"
+                        alt="arrow_left_on"
+                        width={15}
+                        height={26}
+                        priority={true}
+                    />
                 </div>
                 <div
                     className="absolute border-[1px] rounded-full border-[#111111] flex flex-col items-center justify-center cursor-pointer top-[265px]"
@@ -261,7 +272,13 @@ const ImageSwiper = () => {
                         !swiping && handleSwipeImage("next");
                     }}
                 >
-                    <Image src="/static/images/arrow_right_on.png" alt="arrow_right_on" width={15} height={26} />
+                    <Image
+                        src="/static/images/arrow_right_on.png"
+                        alt="arrow_right_on"
+                        width={15}
+                        height={26}
+                        priority={true}
+                    />
                 </div>
                 <div
                     className="flex gap-3 absolute left-[50%] translate-x-[-50%]"
@@ -283,9 +300,21 @@ const ImageSwiper = () => {
                         }}
                     >
                         {autoPlay ? (
-                            <Image src="/static/images/main_prom_stop.png" alt="main_prom_stop" width={9} height={12} />
+                            <Image
+                                src="/static/images/main_prom_stop.png"
+                                alt="main_prom_stop"
+                                width={9}
+                                height={12}
+                                priority={true}
+                            />
                         ) : (
-                            <Image src="/static/images/main_prom_play.png" alt="main_prom_play" width={9} height={12} />
+                            <Image
+                                src="/static/images/main_prom_play.png"
+                                alt="main_prom_play"
+                                width={9}
+                                height={12}
+                                priority={true}
+                            />
                         )}
                     </div>
                     {Array(Math.ceil(imageArray.length / 2))
@@ -306,6 +335,7 @@ const ImageSwiper = () => {
                                             alt="main_prom_on"
                                             width={13}
                                             height={12}
+                                            priority={true}
                                         />
                                     ) : (
                                         <Image
@@ -313,6 +343,7 @@ const ImageSwiper = () => {
                                             alt="main_prom_off"
                                             width={13}
                                             height={12}
+                                            priority={true}
                                         />
                                     )}
                                 </div>

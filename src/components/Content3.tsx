@@ -26,11 +26,11 @@ const Content3 = () => {
             >
                 {windowInnerWidth > 1000 ? (
                     <div className=" min-w-[176px]">
-                        <Image src="/static/images/rewards-logo.png" alt="rewards-logo" width={176} height={152.5} />
+                        <Image src="/static/images/rewards-logo.png" alt="rewards-logo" width={176} height={152.5} priority={true}/>
                     </div>
                 ) : windowInnerWidth > 760 ? (
                     <div className=" min-w-[248px]">
-                        <Image src="/static/images/rewards-logo.png" alt="rewards-logo" width={248} height={215} />
+                        <Image src="/static/images/rewards-logo.png" alt="rewards-logo" width={248} height={215} priority={true}/>
                     </div>
                 ) : (
                     <div className=" min-w-[160px] w-[35%]">
@@ -41,6 +41,7 @@ const Content3 = () => {
                             height={0}
                             sizes="100vw"
                             className="w-full"
+                            priority={true}
                         />
                     </div>
                 )}

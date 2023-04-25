@@ -79,6 +79,7 @@ const Content2 = () => {
                                         alt="icon_board_speaker"
                                         width={33}
                                         height={32}
+                                        priority={true}
                                     />
                                 </div>
                             )}
@@ -139,7 +140,7 @@ const Content2 = () => {
                             </ul>
                         </div>
                         <div className="min-w-[36px] cursor-pointer">
-                            <Image src="/static/images/btn_notice_plus.png" alt="btn_notice_plus" width={36} height={36} />
+                            <Image src="/static/images/btn_notice_plus.png" alt="btn_notice_plus" width={36} height={36} priority={true}/>
                         </div>
                     </div>
                 </div>
@@ -177,9 +178,9 @@ const Content2 = () => {
                             }}
                         >
                             {openImageSwiper ? (
-                                <Image src="/static/images/btn_prom_up.png" alt="btn_prom_up" width={35} height={35} />
+                                <Image src="/static/images/btn_prom_up.png" alt="btn_prom_up" width={35} height={35} priority={true}/>
                             ) : (
-                                <Image src="/static/images/btn_prom_down.png" alt="btn_prom_down" width={35} height={35} />
+                                <Image src="/static/images/btn_prom_down.png" alt="btn_prom_down" width={35} height={35} priority={true}/>
                             )}
                         </div>
                     </div>

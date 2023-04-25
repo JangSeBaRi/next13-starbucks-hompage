@@ -117,6 +117,7 @@ const Drawer = () => {
                                                         width={20}
                                                         height={20}
                                                         alt="mob_gnb_arrow_down_w"
+                                                        priority={true}
                                                     />
                                                 </div>
                                             )}
@@ -181,6 +182,7 @@ const Drawer = () => {
                                                                             width={20}
                                                                             height={20}
                                                                             alt="mob_gnb_arrow_down_w"
+                                                                            priority={true}
                                                                         />
                                                                     </div>
                                                                 )}
@@ -225,7 +227,7 @@ const Drawer = () => {
                         }}
                         onClick={() => setOpenDrawer(false)}
                     >
-                        <Image src="/static/images/btn_gnb_close.png" width={20} height={20} alt="btn_gnb_close" />
+                        <Image src="/static/images/btn_gnb_close.png" width={20} height={20} alt="btn_gnb_close" priority={true}/>
                     </div>
                 </div>
             </div>

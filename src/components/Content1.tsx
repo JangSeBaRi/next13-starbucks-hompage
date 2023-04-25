@@ -16,6 +16,7 @@ const LessThan960Content1 = () => {
                     height={0}
                     sizes="100vw"
                     className="w-full"
+                    priority={true}
                 />
             </div>
             <div className="absolute top-[15.6%] left-[12%] w-[75%] opacity-0 animate-fade-in">
@@ -26,6 +27,7 @@ const LessThan960Content1 = () => {
                     height={0}
                     sizes="100vw"
                     className="w-full"
+                    priority={true}
                 />
             </div>
             <div className="absolute top-[41%] left-[15.8%] w-[84.2%] opacity-0 animate-fade-in">
@@ -36,6 +38,7 @@ const LessThan960Content1 = () => {
                     height={0}
                     sizes="100vw"
                     className="w-full"
+                    priority={true}
                 />
             </div>
             <div className="absolute top-[62.5%] left-[11%] w-[73%] opacity-0 animate-fade-in">
@@ -46,6 +49,7 @@ const LessThan960Content1 = () => {
                     height={0}
                     sizes="100vw"
                     className="w-full"
+                    priority={true}
                 />
             </div>
             <div className="fixed top-[108px] w-[25.7%] right-[1.8%] z-[11]">
@@ -54,12 +58,14 @@ const LessThan960Content1 = () => {
                     alt="gq5gfg_20230407112635659"
                     width={241}
                     height={168}
+                    priority={true}
                 />
                 <Image
                     src="/static/images/Mn0ecH_20220711153127215.png"
                     alt="Mn0ecH_20220711153127215"
                     width={241}
                     height={168}
+                    priority={true}
                 />
             </div>
             <div className="absolute top-[90%] left-[50%] w-[100%] translate-x-[-50%] text-center opacity-0 animate-fade-in">
@@ -86,6 +92,7 @@ const OverThan960Content1 = () => {
                     height={0}
                     sizes="100vw"
                     className="w-full"
+                    priority={true}
                 />
             </div>
             <div className="absolute top-[14%] left-[34.8%] w-[18%] opacity-0 animate-fade-in" style={{animationDelay: '1s'}}>
@@ -96,6 +103,7 @@ const OverThan960Content1 = () => {
                     height={0}
                     sizes="100vw"
                     className="w-full"
+                    priority={true}
                 />
             </div>
             <div className="absolute top-[10.8%] left-[49.5%] w-[15.8%] opacity-0 animate-fade-in" style={{animationDelay: '0.5s'}}>
@@ -106,6 +114,7 @@ const OverThan960Content1 = () => {
                     height={0}
                     sizes="100vw"
                     className="w-full"
+                    priority={true}
                 />
             </div>
             <div className="absolute top-[15.8%] right-[20.8%] w-[18.2%] opacity-0 animate-fade-in" style={{animationDelay: '1.5s'}}>
@@ -116,6 +125,7 @@ const OverThan960Content1 = () => {
                     height={0}
                     sizes="100vw"
                     className="w-full"
+                    priority={true}
                 />
             </div>
             <div
@@ -129,12 +139,14 @@ const OverThan960Content1 = () => {
                     alt="gq5gfg_20230407112627089"
                     width={140}
                     height={96}
+                    priority={true}
                 />
                 <Image
                     src="/static/images/Mn0ecH_20220711153123340.png"
                     alt="Mn0ecH_20220711153123340"
                     width={140}
                     height={96}
+                    priority={true}
                 />
             </div>
             <div className="absolute top-[56%] left-[13.3%] w-[19%] text-center opacity-0 animate-fade-in" style={{animationDelay: '2s'}}>
