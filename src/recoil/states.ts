@@ -19,7 +19,7 @@ const openDrawerRecoil = atom({
 
 const openImageSwiperRecoil = atom({
     key: "openImageSwiperRecoil",
-    default: false,
+    default: true,
 });
 
 export { windowInnerWidthRecoil, loadingRecoil, openDrawerRecoil, openImageSwiperRecoil };
