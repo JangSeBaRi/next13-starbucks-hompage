@@ -4,52 +4,54 @@ import { delay } from "@/utils/delay";
 import { useEffect, useState } from "react";
 
 const Loading = () => {
-    const [filterOn, setFilterOn] = useState<boolean>(false);
+    const [borderRightWidth, setBorderRightWidth] = useState<number>(2);
+    const [showFilter, setShowFilter] = useState<boolean>(false);
     const [opcityZero, setOpcityZero] = useState<boolean>(false);
     useEffect(() => {
         setTimeout(async () => {
+            setBorderRightWidth(0)
             await delay(20);
-            setFilterOn(true);
+            setShowFilter(true);
             await delay(20);
-            setFilterOn(false);
+            setShowFilter(false);
             await delay(20);
-            setFilterOn(true);
+            setShowFilter(true);
             await delay(20);
-            setFilterOn(false);
+            setShowFilter(false);
             await delay(20);
-            setFilterOn(true);
+            setShowFilter(true);
             await delay(20);
-            setFilterOn(false);
+            setShowFilter(false);
             await delay(20);
-            setFilterOn(true);
+            setShowFilter(true);
             await delay(20);
-            setFilterOn(false);
+            setShowFilter(false);
             await delay(20);
-            setFilterOn(true);
+            setShowFilter(true);
             await delay(20);
-            setFilterOn(false);
+            setShowFilter(false);
             await delay(20);
-            setFilterOn(true);
+            setShowFilter(true);
             await delay(20);
-            setFilterOn(false);
+            setShowFilter(false);
             await delay(20);
-            setFilterOn(true);
+            setShowFilter(true);
             await delay(20);
-            setFilterOn(false);
+            setShowFilter(false);
             await delay(20);
-            setFilterOn(true);
+            setShowFilter(true);
             await delay(20);
-            setFilterOn(false);
+            setShowFilter(false);
             await delay(20);
-            setFilterOn(true);
+            setShowFilter(true);
             await delay(20);
-            setFilterOn(false);
+            setShowFilter(false);
             await delay(20);
-            setFilterOn(true);
+            setShowFilter(true);
             await delay(20);
-            setFilterOn(false);
+            setShowFilter(false);
             await delay(200);
-            setFilterOn(true);
+            setShowFilter(true);
             await delay(1000);
             setOpcityZero(true);
         }, 3000);
@@ -62,8 +64,8 @@ const Loading = () => {
             <div className="relative mt-[30vh]">
                 <h1 className="text-[6vw] font-bold text-[#2c2a29]">Starbucks Korea</h1>
                 <h1
-                    className="absolute top-0 left-0 text-[6vw] font-bold whitespace-nowrap text-white overflow-hidden border-r-[2px] border-r-white animate-text-animation"
-                    style={{ filter: filterOn ? "drop-shadow(0 0 20px #fff) drop-shadow(0 0 20px #fff)" : undefined }}
+                    className="absolute top-0 left-0 text-[6vw] font-bold whitespace-nowrap text-white overflow-hidden border-r-white animate-text-animation"
+                    style={{ filter: showFilter ? "drop-shadow(0 0 20px #fff) drop-shadow(0 0 20px #fff)" : undefined, borderRightWidth: borderRightWidth }}
                 >
                     Starbucks Korea
                 </h1>
