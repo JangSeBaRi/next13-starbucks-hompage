@@ -6,7 +6,7 @@ import { useRecoilValue } from "recoil";
 
 const LessThan960Content1 = () => {
     return (
-        <div className="relative h-[264vw] w-auto bg-[url('/images/2023_m_spring2_promotion_bg.jpg')] bg-cover">
+        <div className="relative h-[264vw] w-auto bg-[url('/static/images/2023_m_spring2_promotion_bg.jpg')] bg-cover">
             <div className="absolute top-[6%] left-[11.6%] w-[46%]">
                 <Image
                     src="/images/2023_m_spring2_top_logo.png"
@@ -73,7 +73,7 @@ const LessThan960Content1 = () => {
 const OverThan960Content1 = () => {
     const windowInnerWidth = useRecoilValue(windowInnerWidthRecoil);
     return (
-        <div className="relative h-[32vw] bg-[url('/images/2023_m_spring2_promotion_bg.jpg')] bg-cover">
+        <div className="relative h-[32vw] bg-[url('/static/images/2023_m_spring2_promotion_bg.jpg')] bg-cover">
             <div className="absolute top-[37%] left-[13.3%] w-[19%]">
                 <Image
                     src="/images/2023_m_spring2_top_logo.png"
@@ -91,7 +91,7 @@ const OverThan960Content1 = () => {
             </div>
             <div className="absolute top-[14%] left-[34.8%] w-[18%]">
                 <Image
-                    src="/images/2023_spring2_top_drink2.png"
+                    src="/static/images/2023_spring2_top_drink2.png"
                     alt="2023_spring2_top_drink2"
                     width={0}
                     height={0}
