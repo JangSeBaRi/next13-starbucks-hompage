@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRecoilValue } from "recoil";
 
 const LessThan960Content1 = () => {
+    const windowInnerWidth = useRecoilValue(windowInnerWidthRecoil);
     return (
         <div className="relative h-[264vw] w-auto bg-[url('/static/images/2023_m_spring2_promotion_bg.jpg')] bg-cover">
             <div className="absolute top-[6%] left-[11.6%] w-[46%]">
@@ -62,7 +63,10 @@ const LessThan960Content1 = () => {
                 />
             </div>
             <div className="absolute top-[90%] left-[50%] w-[100%] translate-x-[-50%] text-center">
-                <button className="w-[36%] truncate text-[#005224] border-[2px] border-[#014938] rounded-sm text-[22px] font-bold leading-[10vw] hover:bg-[#014938] hover:underline hover:text-white duration-300">
+                <button
+                    className="w-[36%] truncate text-[#005224] border-[2px] border-[#014938] rounded-sm max-sm:text-[14px] font-bold leading-[10vw] hover:bg-[#014938] hover:underline hover:text-white duration-300"
+                    style={{ fontSize: windowInnerWidth > 500 ? 22 : windowInnerWidth > 380 ? 16 : 14 }}
+                >
                     자세히 보기
                 </button>
             </div>
@@ -85,7 +89,9 @@ const OverThan960Content1 = () => {
                 />
             </div>
             <div className="absolute top-[56%] left-[13.3%] w-[19%] text-center">
-                <button className="w-[34%] truncate px-1 py-2 text-[#014938] border-[2px] border-[#014938] rounded-md text-[13px] hover:bg-[#014938] hover:underline hover:text-white duration-300">
+                <button
+                    className="w-[70%] truncate px-1 py-2 text-[#014938] text-[22px] border-[2px] border-[#014938] rounded-md hover:bg-[#014938] hover:underline hover:text-white duration-300"
+                >
                     자세히 보기
                 </button>
             </div>

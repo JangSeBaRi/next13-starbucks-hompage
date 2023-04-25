@@ -10,7 +10,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 const LessThan960Header = () => {
     const setOpenDrawer = useSetRecoilState(openDrawerRecoil);
     return (
-        <header className="fixed left-0 top-0 z-[10] flex items-center w-screen h-[70px] bg-[#f6f5ef] px-[10px] justify-between">
+        <header className="fixed left-0 top-0 z-[10] flex items-center w-full h-[70px] bg-[#f6f5ef] px-[10px] justify-between">
             <h1 className="min-w-[45px]">
                 <Link href={"/"}>
                     <Image src="/static/images/logo.png" width={45} height={45} alt="logo"></Image>
@@ -39,7 +39,7 @@ const LessThan960Header = () => {
 const OverThan960Header = () => {
     const [activeSubGnb, setActiveSubGnb] = useState<string>("");
     return (
-        <header className="fixed left-0 top-0 z-[10] h-[126px] bg-[#f6f5ef] flex flex-col justify-center w-screen items-center">
+        <header className="fixed left-0 top-0 z-[10] h-[126px] bg-[#f6f5ef] flex flex-col justify-center w-full items-center">
             <div className="max-w-[1120px] w-full h-full flex items-center justify-between pl-[20px]">
                 <h1>
                     <Link href={"/"}>
