@@ -4,9 +4,6 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: [
-      'https://next13-starbucks-hompage-ajw9r3qzg-jangsebari.vercel.app/',
-    ]
     // remotePatterns: [
     //   {
     //     protocol: 'https',

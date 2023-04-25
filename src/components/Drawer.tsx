@@ -113,7 +113,7 @@ const Drawer = () => {
                                             {secondItems && (
                                                 <div className="min-w-[20px] depth_1_arrow duration-300">
                                                     <Image
-                                                        src="/images/mob_gnb_arrow_down_w.png"
+                                                        src="/static/images/mob_gnb_arrow_down_w.png"
                                                         width={20}
                                                         height={20}
                                                         alt="mob_gnb_arrow_down_w"
@@ -177,7 +177,7 @@ const Drawer = () => {
                                                                 {thirdItems && (
                                                                     <div className="min-w-[20px] depth_2_arrow duration-300 opacity-30">
                                                                         <Image
-                                                                            src="/images/mob_gnb_arrow_down_w.png"
+                                                                            src="/static/images/mob_gnb_arrow_down_w.png"
                                                                             width={20}
                                                                             height={20}
                                                                             alt="mob_gnb_arrow_down_w"
@@ -225,7 +225,7 @@ const Drawer = () => {
                         }}
                         onClick={() => setOpenDrawer(false)}
                     >
-                        <Image src="/images/btn_gnb_close.png" width={20} height={20} alt="btn_gnb_close" />
+                        <Image src="/static/images/btn_gnb_close.png" width={20} height={20} alt="btn_gnb_close" />
                     </div>
                 </div>
             </div>

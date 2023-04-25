@@ -26,7 +26,7 @@ const ImageSwiper = () => {
             id: "FbOy46_20230102123439782_copy",
             component: (
                 <Image
-                    src="/images/FbOy46_20230102123439782.jpg"
+                    src="/static/images/FbOy46_20230102123439782.jpg"
                     alt="FbOy46_20230102123439782"
                     width={0}
                     height={0}
@@ -39,7 +39,7 @@ const ImageSwiper = () => {
             id: "8akpfI_20230320084449571",
             component: (
                 <Image
-                    src="/images/8akpfI_20230320084449571.jpg"
+                    src="/static/images/8akpfI_20230320084449571.jpg"
                     alt="8akpfI_20230320084449571"
                     width={0}
                     height={0}
@@ -52,7 +52,7 @@ const ImageSwiper = () => {
             id: "uCaICb_20230209082722973",
             component: (
                 <Image
-                    src="/images/uCaICb_20230209082722973.jpg"
+                    src="/static/images/uCaICb_20230209082722973.jpg"
                     alt="uCaICb_20230209082722973"
                     width={0}
                     height={0}
@@ -65,7 +65,7 @@ const ImageSwiper = () => {
             id: "FbOy46_20230102123439782",
             component: (
                 <Image
-                    src="/images/FbOy46_20230102123439782.jpg"
+                    src="/static/images/FbOy46_20230102123439782.jpg"
                     alt="FbOy46_20230102123439782"
                     width={0}
                     height={0}
@@ -78,7 +78,7 @@ const ImageSwiper = () => {
             id: "8akpfI_20230320084449571_copy",
             component: (
                 <Image
-                    src="/images/8akpfI_20230320084449571.jpg"
+                    src="/static/images/8akpfI_20230320084449571.jpg"
                     alt="8akpfI_20230320084449571"
                     width={0}
                     height={0}
@@ -247,7 +247,7 @@ const ImageSwiper = () => {
                         !swiping && handleSwipeImage("prev");
                     }}
                 >
-                    <Image src="/images/arrow_left_on.png" alt="arrow_left_on" width={15} height={26} />
+                    <Image src="/static/images/arrow_left_on.png" alt="arrow_left_on" width={15} height={26} />
                 </div>
                 <div
                     className="absolute border-[1px] rounded-full border-[#111111] flex flex-col items-center justify-center cursor-pointer top-[265px]"
@@ -261,7 +261,7 @@ const ImageSwiper = () => {
                         !swiping && handleSwipeImage("next");
                     }}
                 >
-                    <Image src="/images/arrow_right_on.png" alt="arrow_right_on" width={15} height={26} />
+                    <Image src="/static/images/arrow_right_on.png" alt="arrow_right_on" width={15} height={26} />
                 </div>
                 <div
                     className="flex gap-3 absolute left-[50%] translate-x-[-50%]"
@@ -283,9 +283,9 @@ const ImageSwiper = () => {
                         }}
                     >
                         {autoPlay ? (
-                            <Image src="/images/main_prom_stop.png" alt="main_prom_stop" width={9} height={12} />
+                            <Image src="/static/images/main_prom_stop.png" alt="main_prom_stop" width={9} height={12} />
                         ) : (
-                            <Image src="/images/main_prom_play.png" alt="main_prom_play" width={9} height={12} />
+                            <Image src="/static/images/main_prom_play.png" alt="main_prom_play" width={9} height={12} />
                         )}
                     </div>
                     {Array(Math.ceil(imageArray.length / 2))
@@ -302,14 +302,14 @@ const ImageSwiper = () => {
                                 >
                                     {idx === activeImageIdx ? (
                                         <Image
-                                            src="/images/main_prom_on.png"
+                                            src="/static/images/main_prom_on.png"
                                             alt="main_prom_on"
                                             width={13}
                                             height={12}
                                         />
                                     ) : (
                                         <Image
-                                            src="/images/main_prom_off.png"
+                                            src="/static/images/main_prom_off.png"
                                             alt="main_prom_off"
                                             width={13}
                                             height={12}

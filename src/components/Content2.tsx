@@ -75,7 +75,7 @@ const Content2 = () => {
                             ) : (
                                 <div className="pl-5 min-w-[33px]">
                                     <Image
-                                        src="/images/icon_board_speaker.png"
+                                        src="/static/images/icon_board_speaker.png"
                                         alt="icon_board_speaker"
                                         width={33}
                                         height={32}
@@ -139,7 +139,7 @@ const Content2 = () => {
                             </ul>
                         </div>
                         <div className="min-w-[36px] cursor-pointer">
-                            <Image src="/images/btn_notice_plus.png" alt="btn_notice_plus" width={36} height={36} />
+                            <Image src="/static/images/btn_notice_plus.png" alt="btn_notice_plus" width={36} height={36} />
                         </div>
                     </div>
                 </div>
@@ -177,9 +177,9 @@ const Content2 = () => {
                             }}
                         >
                             {openImageSwiper ? (
-                                <Image src="/images/btn_prom_up.png" alt="btn_prom_up" width={35} height={35} />
+                                <Image src="/static/images/btn_prom_up.png" alt="btn_prom_up" width={35} height={35} />
                             ) : (
-                                <Image src="/images/btn_prom_down.png" alt="btn_prom_down" width={35} height={35} />
+                                <Image src="/static/images/btn_prom_down.png" alt="btn_prom_down" width={35} height={35} />
                             )}
                         </div>
                     </div>

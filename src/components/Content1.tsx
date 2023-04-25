@@ -9,7 +9,7 @@ const LessThan960Content1 = () => {
         <div className="relative h-[264vw] w-auto bg-[url('/static/images/2023_m_spring2_promotion_bg.jpg')] bg-cover">
             <div className="absolute top-[6%] left-[11.6%] w-[46%]">
                 <Image
-                    src="/images/2023_m_spring2_top_logo.png"
+                    src="/static/images/2023_m_spring2_top_logo.png"
                     alt="2023_m_spring2_top_logo"
                     width={0}
                     height={0}
@@ -19,7 +19,7 @@ const LessThan960Content1 = () => {
             </div>
             <div className="absolute top-[15.6%] left-[12%] w-[75%]">
                 <Image
-                    src="/images/2023_m_spring2_top_drink1.png"
+                    src="/static/images/2023_m_spring2_top_drink1.png"
                     alt="2023_m_spring2_top_drink1"
                     width={0}
                     height={0}
@@ -29,7 +29,7 @@ const LessThan960Content1 = () => {
             </div>
             <div className="absolute top-[41%] left-[15.8%] w-[84.2%]">
                 <Image
-                    src="/images/2023_m_spring2_top_drink2.png"
+                    src="/static/images/2023_m_spring2_top_drink2.png"
                     alt="2023_m_spring2_top_drink2"
                     width={0}
                     height={0}
@@ -39,7 +39,7 @@ const LessThan960Content1 = () => {
             </div>
             <div className="absolute top-[62.5%] left-[11%] w-[73%]">
                 <Image
-                    src="/images/2023_m_spring2_top_drink3.png"
+                    src="/static/images/2023_m_spring2_top_drink3.png"
                     alt="2023_m_spring2_top_drink3"
                     width={0}
                     height={0}
@@ -49,13 +49,13 @@ const LessThan960Content1 = () => {
             </div>
             <div className="fixed top-[108px] w-[25.7%] right-[1.8%]">
                 <Image
-                    src="/images/gq5gfg_20230407112635659.png"
+                    src="/static/images/gq5gfg_20230407112635659.png"
                     alt="gq5gfg_20230407112635659"
                     width={241}
                     height={168}
                 />
                 <Image
-                    src="/images/Mn0ecH_20220711153127215.png"
+                    src="/static/images/Mn0ecH_20220711153127215.png"
                     alt="Mn0ecH_20220711153127215"
                     width={241}
                     height={168}
@@ -76,7 +76,7 @@ const OverThan960Content1 = () => {
         <div className="relative h-[32vw] bg-[url('/static/images/2023_m_spring2_promotion_bg.jpg')] bg-cover">
             <div className="absolute top-[37%] left-[13.3%] w-[19%]">
                 <Image
-                    src="/images/2023_m_spring2_top_logo.png"
+                    src="/static/images/2023_m_spring2_top_logo.png"
                     alt="2023_m_spring2_top_logo"
                     width={0}
                     height={0}
@@ -101,7 +101,7 @@ const OverThan960Content1 = () => {
             </div>
             <div className="absolute top-[10.8%] left-[49.5%] w-[15.8%]">
                 <Image
-                    src="/images/2023_spring2_top_drink1.png"
+                    src="/static/images/2023_spring2_top_drink1.png"
                     alt="2023_spring2_top_drink1"
                     width={0}
                     height={0}
@@ -111,7 +111,7 @@ const OverThan960Content1 = () => {
             </div>
             <div className="absolute top-[15.8%] right-[20.8%] w-[18.2%]">
                 <Image
-                    src="/images/2023_spring2_top_drink3.png"
+                    src="/static/images/2023_spring2_top_drink3.png"
                     alt="2023_spring2_top_drink3"
                     width={0}
                     height={0}
@@ -126,13 +126,13 @@ const OverThan960Content1 = () => {
                 }}
             >
                 <Image
-                    src="/images/gq5gfg_20230407112627089.png"
+                    src="/static/images/gq5gfg_20230407112627089.png"
                     alt="gq5gfg_20230407112627089"
                     width={140}
                     height={96}
                 />
                 <Image
-                    src="/images/Mn0ecH_20220711153123340.png"
+                    src="/static/images/Mn0ecH_20220711153123340.png"
                     alt="Mn0ecH_20220711153123340"
                     width={140}
                     height={96}
