@@ -8,7 +8,7 @@ const LessThan960Content1 = () => {
     const windowInnerWidth = useRecoilValue(windowInnerWidthRecoil);
     return (
         <div className="relative h-[264vw] w-auto bg-[url('/static/images/2023_m_spring2_promotion_bg.jpg')] bg-cover">
-            <div className="absolute top-[6%] left-[11.6%] w-[46%]">
+            <div className="absolute top-[6%] left-[11.6%] w-[46%] opacity-0 animate-fade-in">
                 <Image
                     src="/static/images/2023_m_spring2_top_logo.png"
                     alt="2023_m_spring2_top_logo"
@@ -18,7 +18,7 @@ const LessThan960Content1 = () => {
                     className="w-full"
                 />
             </div>
-            <div className="absolute top-[15.6%] left-[12%] w-[75%]">
+            <div className="absolute top-[15.6%] left-[12%] w-[75%] opacity-0 animate-fade-in">
                 <Image
                     src="/static/images/2023_m_spring2_top_drink1.png"
                     alt="2023_m_spring2_top_drink1"
@@ -28,7 +28,7 @@ const LessThan960Content1 = () => {
                     className="w-full"
                 />
             </div>
-            <div className="absolute top-[41%] left-[15.8%] w-[84.2%]">
+            <div className="absolute top-[41%] left-[15.8%] w-[84.2%] opacity-0 animate-fade-in">
                 <Image
                     src="/static/images/2023_m_spring2_top_drink2.png"
                     alt="2023_m_spring2_top_drink2"
@@ -38,7 +38,7 @@ const LessThan960Content1 = () => {
                     className="w-full"
                 />
             </div>
-            <div className="absolute top-[62.5%] left-[11%] w-[73%]">
+            <div className="absolute top-[62.5%] left-[11%] w-[73%] opacity-0 animate-fade-in">
                 <Image
                     src="/static/images/2023_m_spring2_top_drink3.png"
                     alt="2023_m_spring2_top_drink3"
@@ -62,7 +62,7 @@ const LessThan960Content1 = () => {
                     height={168}
                 />
             </div>
-            <div className="absolute top-[90%] left-[50%] w-[100%] translate-x-[-50%] text-center">
+            <div className="absolute top-[90%] left-[50%] w-[100%] translate-x-[-50%] text-center opacity-0 animate-fade-in">
                 <button
                     className="w-[36%] truncate text-[#005224] border-[2px] border-[#014938] rounded-sm max-sm:text-[14px] font-bold leading-[10vw] hover:bg-[#014938] hover:underline hover:text-white duration-300"
                     style={{ fontSize: windowInnerWidth > 500 ? 22 : windowInnerWidth > 380 ? 16 : 14 }}
@@ -78,7 +78,7 @@ const OverThan960Content1 = () => {
     const windowInnerWidth = useRecoilValue(windowInnerWidthRecoil);
     return (
         <div className="relative h-[32vw] bg-[url('/static/images/2023_m_spring2_promotion_bg.jpg')] bg-cover">
-            <div className="absolute top-[37%] left-[13.3%] w-[19%]">
+            <div className="absolute top-[37%] left-[13.3%] w-[19%] opacity-0 animate-fade-in">
                 <Image
                     src="/static/images/2023_m_spring2_top_logo.png"
                     alt="2023_m_spring2_top_logo"
@@ -88,14 +88,7 @@ const OverThan960Content1 = () => {
                     className="w-full"
                 />
             </div>
-            <div className="absolute top-[56%] left-[13.3%] w-[19%] text-center">
-                <button
-                    className="w-[70%] truncate px-1 py-2 text-[#014938] text-[22px] border-[2px] border-[#014938] rounded-md hover:bg-[#014938] hover:underline hover:text-white duration-300"
-                >
-                    자세히 보기
-                </button>
-            </div>
-            <div className="absolute top-[14%] left-[34.8%] w-[18%]">
+            <div className="absolute top-[14%] left-[34.8%] w-[18%] opacity-0 animate-fade-in" style={{animationDelay: '1s'}}>
                 <Image
                     src="/static/images/2023_spring2_top_drink2.png"
                     alt="2023_spring2_top_drink2"
@@ -105,7 +98,7 @@ const OverThan960Content1 = () => {
                     className="w-full"
                 />
             </div>
-            <div className="absolute top-[10.8%] left-[49.5%] w-[15.8%]">
+            <div className="absolute top-[10.8%] left-[49.5%] w-[15.8%] opacity-0 animate-fade-in" style={{animationDelay: '0.5s'}}>
                 <Image
                     src="/static/images/2023_spring2_top_drink1.png"
                     alt="2023_spring2_top_drink1"
@@ -115,7 +108,7 @@ const OverThan960Content1 = () => {
                     className="w-full"
                 />
             </div>
-            <div className="absolute top-[15.8%] right-[20.8%] w-[18.2%]">
+            <div className="absolute top-[15.8%] right-[20.8%] w-[18.2%] opacity-0 animate-fade-in" style={{animationDelay: '1.5s'}}>
                 <Image
                     src="/static/images/2023_spring2_top_drink3.png"
                     alt="2023_spring2_top_drink3"
@@ -143,6 +136,13 @@ const OverThan960Content1 = () => {
                     width={140}
                     height={96}
                 />
+            </div>
+            <div className="absolute top-[56%] left-[13.3%] w-[19%] text-center opacity-0 animate-fade-in" style={{animationDelay: '2s'}}>
+                <button
+                    className="w-[70%] truncate px-1 py-2 text-[#014938] text-[22px] border-[2px] border-[#014938] rounded-md hover:bg-[#014938] hover:underline hover:text-white duration-300"
+                >
+                    자세히 보기
+                </button>
             </div>
         </div>
     );

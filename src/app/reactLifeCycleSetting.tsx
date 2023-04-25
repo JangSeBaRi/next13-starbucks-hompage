@@ -1,7 +1,9 @@
 "use client";
 
+import Loading from "@/components/Loading";
 import { windowInnerWidthRecoil } from "@/recoil/states";
-import { ReactNode, useEffect } from "react";
+import { delay } from "@/utils/delay";
+import { ReactNode, useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 
 interface Props {
@@ -9,6 +11,7 @@ interface Props {
 }
 
 export default function ReactLifeCycleSetting({ children }: Props) {
+    const [loading, setLoading] = useState<boolean>(true);
     const setWindowInnerWidth = useSetRecoilState(windowInnerWidthRecoil);
 
     useEffect(() => {
@@ -22,5 +25,19 @@ export default function ReactLifeCycleSetting({ children }: Props) {
         };
     }, []);
 
-    return <>{children}</>;
+    useEffect(() => {
+        (async () => {
+            await delay(4600);
+            document.querySelector("html")!!.style.overflowY = "scroll";
+            await delay(1000);
+            setLoading(false);
+        })();
+    }, []);
+
+    return (
+        <>
+            {loading && <Loading />}
+            {children}
+        </>
+    );
 }
