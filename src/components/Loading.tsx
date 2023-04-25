@@ -55,7 +55,10 @@ const Loading = () => {
         }, 3000);
     }, []);
     return (
-        <div className="absolute z-[9999] w-full h-screen flex flex-col items-center bg-[#1e3932] duration-1000" style={{opacity: opcityZero ? 0 : 1}}>
+        <div
+            className="absolute z-[9999] w-full h-screen flex flex-col items-center bg-[#1e3932] overflow-hidden"
+            style={{ opacity: opcityZero ? 0 : 1, transition: "opacity 1s" }}
+        >
             <div className="relative mt-[30vh]">
                 <h1 className="text-[6vw] font-bold text-[#2c2a29]">Starbucks Korea</h1>
                 <h1
