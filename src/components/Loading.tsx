@@ -58,10 +58,10 @@ const Loading = () => {
     }, []);
     return (
         <div
-            className="absolute z-[9999] w-full h-screen flex flex-col items-center bg-[#1e3932]"
+            className="absolute z-[9999] w-full h-screen flex flex-col items-center justify-between bg-[#1e3932]"
             style={{ opacity: opcityZero ? 0 : 1, transition: "opacity 1s" }}
         >
-            <div className="relative mt-[30vh]">
+            <div className="relative mt-[20vh]">
                 <h1 className="text-[6vw] font-bold text-[#2c2a29]">Starbucks Korea</h1>
                 <h1
                     className="absolute top-0 left-0 text-[6vw] font-bold whitespace-nowrap text-white overflow-hidden border-r-white animate-text-animation"
@@ -70,6 +70,7 @@ const Loading = () => {
                     Starbucks Korea
                 </h1>
             </div>
+            <h1 className="text-[3vw] font-bold  text-white mb-[10vh]">Made by JangSeBaRi</h1>
         </div>
     );
 };
