@@ -48,7 +48,7 @@ const LessThan960Content1 = () => {
                     className="w-full"
                 />
             </div>
-            <div className="fixed top-[108px] w-[25.7%] right-[1.8%]">
+            <div className="fixed top-[108px] w-[25.7%] right-[1.8%] z-[11]">
                 <Image
                     src="/static/images/gq5gfg_20230407112635659.png"
                     alt="gq5gfg_20230407112635659"
