@@ -79,7 +79,6 @@ const Content3 = () => {
                                 }}
                             >
                                 <a
-                                    href=""
                                     className=" inline-block h-[38px] leading-[34px] px-[18.5px] bg-[#00704a] text-white text-[14px] cursor-pointer whitespace-nowrap"
                                     style={{
                                         width: windowInnerWidth > 760 ? undefined : "40%",
@@ -89,7 +88,6 @@ const Content3 = () => {
                                     회원가입
                                 </a>
                                 <a
-                                    href=""
                                     className=" inline-block h-[38px] leading-[34px] px-[18.5px] bg-transparent text-white text-[14px] ml-[9px] border-[2px] border-white cursor-pointer whitespace-nowrap"
                                     style={{
                                         width: windowInnerWidth > 760 ? undefined : "40%",
@@ -122,7 +120,6 @@ const Content3 = () => {
                             }}
                         >
                             <a
-                                href=""
                                 className=" inline-block h-[38px] leading-[34px] px-[18.5px] bg-transparent text-white text-[14px] border-[2px] border-white cursor-pointer whitespace-nowrap"
                                 style={{
                                     width: windowInnerWidth > 760 ? undefined : "calc(80% + 9px)",
