@@ -76,7 +76,7 @@ const Content6 = () => {
                     </>
                 ) : (
                     <>
-                        <div className="absolute top-[74%] left-[50%] translate-x-[-50%] w-[60%]">
+                        <div className="absolute top-[70%] left-[50%] translate-x-[-50%] w-[55%]">
                             <Image
                                 src="/static/images/mobile_menu_txt01.png"
                                 alt="mobile_menu_txt01"
@@ -87,7 +87,7 @@ const Content6 = () => {
                                 priority={true}
                             />
                         </div>
-                        <div className="absolute top-[81%] left-[50%] translate-x-[-50%] w-[60%]">
+                        <div className="absolute top-[77%] left-[50%] translate-x-[-50%] w-[60%]">
                             <Image
                                 src="/static/images/mobile_menu_txt02.png"
                                 alt="mobile_menu_txt02"
@@ -98,11 +98,12 @@ const Content6 = () => {
                                 priority={true}
                             />
                         </div>
-                        <div className="absolute bottom-[5%] left-[50%] -translate-x-1/2 w-[40%] h-[5%]">
+                        <div className="absolute bottom-[8%] left-[50%] -translate-x-1/2 w-[40%] h-[5%]">
                             <a
-                                className="inline-block w-full h-full border-[2px] border-white rounded-[3px] text-white text-center leading-[11vw] cursor-pointer hover:text-[#111111] hover:underline hover:bg-white duration-300"
+                                className="inline-block w-full h-full border-[2px] border-white rounded-[3px] text-white text-center leading-[11vw] cursor-pointer hover:text-[#111111] hover:underline hover:bg-white"
                                 style={{
                                     fontSize: windowInnerWidth > 480 ? 22 : 16,
+                                    transition: "background-color 0.3s, color 0.3s"
                                 }}
                             >
                                 자세히 보기
