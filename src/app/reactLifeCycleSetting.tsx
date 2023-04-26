@@ -3,7 +3,7 @@
 import Loading from "@/components/Loading";
 import { loadingRecoil, windowInnerWidthRecoil } from "@/recoil/states";
 import { delay } from "@/utils/delay";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
 interface Props {
