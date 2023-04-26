@@ -27,7 +27,7 @@ export default function ReactLifeCycleSetting({ children }: Props) {
 
     useEffect(() => {
         (async () => {
-            await delay(5400);
+            await delay(5500);
             setLoading(false);
             document.querySelector("html")!!.style.overflowY = "scroll";
         })();

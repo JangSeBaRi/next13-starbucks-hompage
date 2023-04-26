@@ -4,24 +4,46 @@ import { gnbList, subGnbList, subGnbMenuObject } from "@/constant/header";
 import { openDrawerRecoil, windowInnerWidthRecoil } from "@/recoil/states";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 const LessThan960Header = () => {
+    const router = useRouter();
+    const pathname = usePathname();
+    const handleClickLogo = () => {
+        if (pathname === "/") {
+            document.querySelector("html")!!.scrollTo({ behavior: "smooth", top: 0 });
+        } else {
+            router.push("/");
+        }
+    };
     const setOpenDrawer = useSetRecoilState(openDrawerRecoil);
     return (
         <header className="fixed left-0 top-0 z-[10] flex items-center w-full h-[70px] bg-[#f6f5ef] px-[10px] justify-between">
             <h1 className="min-w-[45px]">
-                <Link href={"/"}>
+                <a onClick={handleClickLogo}>
                     <Image src="/static/images/logo.png" width={45} height={45} alt="logo" priority={true}></Image>
-                </Link>
+                </a>
             </h1>
             <ul className="h-full flex items-center justify-end gap-8">
                 <li className="min-w-[25px] cursor-pointer">
-                    <Image src="/static/images/icon_user_m.png" width={25} height={30} alt="icon_user_m" priority={true}></Image>
+                    <Image
+                        src="/static/images/icon_user_m.png"
+                        width={25}
+                        height={30}
+                        alt="icon_user_m"
+                        priority={true}
+                    ></Image>
                 </li>
                 <li className="min-w-[24px] cursor-pointer">
-                    <Image src="/static/images/icon_spot_m.png" width={24} height={32} alt="icon_spot_m" priority={true}></Image>
+                    <Image
+                        src="/static/images/icon_spot_m.png"
+                        width={24}
+                        height={32}
+                        alt="icon_spot_m"
+                        priority={true}
+                    ></Image>
                 </li>
                 <li
                     className="min-w-[28px] cursor-pointer"
@@ -29,7 +51,13 @@ const LessThan960Header = () => {
                         setOpenDrawer(true);
                     }}
                 >
-                    <Image src="/static/images/btn_berger_m.png" width={28} height={26} alt="btn_berger_m" priority={true}></Image>
+                    <Image
+                        src="/static/images/btn_berger_m.png"
+                        width={28}
+                        height={26}
+                        alt="btn_berger_m"
+                        priority={true}
+                    ></Image>
                 </li>
             </ul>
         </header>
@@ -38,13 +66,22 @@ const LessThan960Header = () => {
 
 const OverThan960Header = () => {
     const [activeSubGnb, setActiveSubGnb] = useState<string>("");
+    const router = useRouter();
+    const pathname = usePathname();
+    const handleClickLogo = () => {
+        if (pathname === "/") {
+            document.querySelector("html")!!.scrollTo({ behavior: "smooth", top: 0 });
+        } else {
+            router.push("/");
+        }
+    };
     return (
         <header className="fixed left-0 top-0 z-[10] h-[126px] bg-[#f6f5ef] flex flex-col justify-center w-full items-center">
             <div className="max-w-[1120px] w-full h-full flex items-center justify-between pl-[20px]">
                 <h1>
-                    <Link href={"/"}>
+                    <a onClick={handleClickLogo}>
                         <Image src="/static/images/logo.png" width={70} height={70} alt="logo" priority={true}></Image>
-                    </Link>
+                    </a>
                 </h1>
                 <nav className="flex flex-col items-end justify-between h-full">
                     <div className="flex items-center pt-2 pr-10">
@@ -62,7 +99,13 @@ const OverThan960Header = () => {
                             })}
                         </ul>
                         <div className="w-[36px] h-[36px] bg-white rounded-[5px] border-[2px] border-[#cccccc] flex justify-center items-center">
-                            <Image src="/static/images/icon_magnifier_black.png" width={20} height={21} alt="icon_magnifier_black" priority={true}></Image>
+                            <Image
+                                src="/static/images/icon_magnifier_black.png"
+                                width={20}
+                                height={21}
+                                alt="icon_magnifier_black"
+                                priority={true}
+                            ></Image>
                         </div>
                     </div>
                     <ul className="flex">

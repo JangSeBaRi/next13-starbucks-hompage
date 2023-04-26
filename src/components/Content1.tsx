@@ -4,14 +4,22 @@ import { loadingRecoil, windowInnerWidthRecoil } from "@/recoil/states";
 import Image from "next/image";
 import { useRecoilValue } from "recoil";
 
-const LessThan960Content1 = () => {
+const Content1 = () => {
     const windowInnerWidth = useRecoilValue(windowInnerWidthRecoil);
     const loading = useRecoilValue(loadingRecoil);
     return (
-        <div className="relative h-[264vw] w-auto bg-[url('/static/images/2023_m_spring2_promotion_bg.jpg')] bg-cover">
+        <div
+            className="relative bg-[url('/static/images/2023_m_spring2_promotion_bg.jpg')] bg-cover"
+            style={windowInnerWidth > 960 ? { height: "32vw" } : { height: "264vw" }}
+        >
             <div
-                className="absolute top-[6%] left-[11.6%] w-[46%] opacity-0 animate-fade-in"
-                style={{ animationDelay: "5500ms" }}
+                className={`absolute opacity-0 ${!loading && "animate-fade-in"}`}
+                style={Object.assign(
+                    { animationDelay: "0s" },
+                    windowInnerWidth > 960
+                        ? { top: "37%", left: "13.3%", width: "19%" }
+                        : { top: "6%", left: "11.6%", width: "46%" }
+                )}
             >
                 <Image
                     src="/static/images/2023_m_spring2_top_logo.png"
@@ -24,177 +32,177 @@ const LessThan960Content1 = () => {
                 />
             </div>
             <div
-                className="absolute top-[15.6%] left-[12%] w-[75%] opacity-0 animate-fade-in"
-                style={{ animationDelay: "6000ms" }}
+                className={`absolute opacity-0 ${!loading && "animate-fade-in"}`}
+                style={
+                    windowInnerWidth > 960
+                        ? { top: "14%", left: "34.8%", width: "18%", animationDelay: "1s" }
+                        : { top: "15.6%", left: "12%", width: "75%", animationDelay: "0.5s" }
+                }
             >
-                <Image
-                    src="/static/images/2023_m_spring2_top_drink1.png"
-                    alt="2023_m_spring2_top_drink1"
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    className="w-full"
-                    priority={true}
-                />
+                {windowInnerWidth > 960 ? (
+                    <Image
+                        src="/static/images/2023_spring2_top_drink2.png"
+                        alt="2023_spring2_top_drink2"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className="w-full"
+                        priority={true}
+                    />
+                ) : (
+                    <Image
+                        src="/static/images/2023_m_spring2_top_drink1.png"
+                        alt="2023_m_spring2_top_drink1"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className="w-full"
+                        priority={true}
+                    />
+                )}
             </div>
             <div
-                className="absolute top-[41%] left-[15.8%] w-[84.2%] opacity-0 animate-fade-in"
-                style={{ animationDelay: "6500ms" }}
+                className={`absolute opacity-0 ${!loading && "animate-fade-in"}`}
+                style={
+                    windowInnerWidth > 960
+                        ? { top: "10.8%", left: "49.5%", width: "15.8%", animationDelay: "0.5s" }
+                        : { top: "41%", left: "15.8%", width: "84.2%", animationDelay: "1s" }
+                }
             >
-                <Image
-                    src="/static/images/2023_m_spring2_top_drink2.png"
-                    alt="2023_m_spring2_top_drink2"
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    className="w-full"
-                    priority={true}
-                />
+                {windowInnerWidth > 960 ? (
+                    <Image
+                        src="/static/images/2023_spring2_top_drink1.png"
+                        alt="2023_spring2_top_drink1"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className="w-full"
+                        priority={true}
+                    />
+                ) : (
+                    <Image
+                        src="/static/images/2023_m_spring2_top_drink2.png"
+                        alt="2023_m_spring2_top_drink2"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className="w-full"
+                        priority={true}
+                    />
+                )}
             </div>
             <div
-                className="absolute top-[62.5%] left-[11%] w-[73%] opacity-0 animate-fade-in"
-                style={{ animationDelay: "7000ms" }}
+                className={`absolute opacity-0 ${!loading && "animate-fade-in"}`}
+                style={Object.assign(
+                    { animationDelay: "1.5s" },
+                    windowInnerWidth > 960
+                        ? { top: "15.8%", right: "20.8%", width: "18.2%" }
+                        : { top: "62.5%", left: "11%", width: "73%" }
+                )}
             >
-                <Image
-                    src="/static/images/2023_m_spring2_top_drink3.png"
-                    alt="2023_m_spring2_top_drink3"
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    className="w-full"
-                    priority={true}
-                />
+                {windowInnerWidth > 960 ? (
+                    <Image
+                        src="/static/images/2023_spring2_top_drink3.png"
+                        alt="2023_spring2_top_drink3"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className="w-full"
+                        priority={true}
+                    />
+                ) : (
+                    <Image
+                        src="/static/images/2023_m_spring2_top_drink3.png"
+                        alt="2023_m_spring2_top_drink3"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className="w-full"
+                        priority={true}
+                    />
+                )}
             </div>
             <div
-                className="absolute top-[90%] left-[50%] w-[100%] translate-x-[-50%] text-center opacity-0 animate-fade-in"
-                style={{ animationDelay: "7900ms" }}
+                className={`absolute text-center opacity-0 ${!loading && "animate-fade-in"}`}
+                style={Object.assign(
+                    { animationDelay: "2s" },
+                    windowInnerWidth > 960
+                        ? { top: "56%", left: "13.3%", width: "19%" }
+                        : { top: "90%", left: "50%", width: "100%", transform: "translateX(-50%)" }
+                )}
             >
                 <button
-                    className="w-[36%] truncate text-[#005224] border-[2px] border-[#014938] rounded-sm max-sm:text-[14px] font-bold leading-[10vw] hover:bg-[#014938] hover:underline hover:text-white duration-300"
-                    style={{ fontSize: windowInnerWidth > 500 ? 22 : windowInnerWidth > 380 ? 16 : 14 }}
+                    className="whitespace-nowrap truncate text-[#005224] border-[2px] border-[#014938] hover:bg-[#014938] hover:underline hover:text-white"
+                    style={Object.assign(
+                        {
+                            transition: "background-color 0.3s, color 0.3s",
+                            fontSize:
+                                windowInnerWidth > 960
+                                    ? 15
+                                    : windowInnerWidth > 500
+                                    ? 22
+                                    : windowInnerWidth > 380
+                                    ? 16
+                                    : 14,
+                        },
+                        windowInnerWidth > 960
+                            ? { width: "60%", padding: "8px", borderRadius: 5 }
+                            : { width: "36%", fontWeight: "bold", lineHeight: "10vw", borderRadius: 3 }
+                    )}
                 >
                     자세히 보기
                 </button>
             </div>
 
-            <div className="fixed top-[108px] w-[25.7%] right-[1.8%] z-[11]">
-                <Image
-                    src="/static/images/gq5gfg_20230407112635659.png"
-                    alt="gq5gfg_20230407112635659"
-                    width={241}
-                    height={168}
-                    priority={true}
-                />
-                <Image
-                    src="/static/images/Mn0ecH_20220711153127215.png"
-                    alt="Mn0ecH_20220711153127215"
-                    width={241}
-                    height={168}
-                    priority={true}
-                />
+            <div
+                className="fixed z-[11]"
+                style={
+                    windowInnerWidth > 1400
+                        ? { top: 154, left: "54.5%", right: "1%", width: 140, marginLeft: 485 }
+                        : windowInnerWidth > 960
+                        ? { top: 154, left: "auto", right: "1%", width: 140, marginLeft: 485 }
+                        : { top: 108, right: "1.8%", width: "25.7%" }
+                }
+            >
+                {windowInnerWidth > 960 ? (
+                    <>
+                        <Image
+                            src="/static/images/gq5gfg_20230407112627089.png"
+                            alt="gq5gfg_20230407112627089"
+                            width={140}
+                            height={96}
+                            priority={true}
+                        />
+                        <Image
+                            src="/static/images/Mn0ecH_20220711153123340.png"
+                            alt="Mn0ecH_20220711153123340"
+                            width={140}
+                            height={96}
+                            priority={true}
+                        />
+                    </>
+                ) : (
+                    <>
+                        {" "}
+                        <Image
+                            src="/static/images/gq5gfg_20230407112635659.png"
+                            alt="gq5gfg_20230407112635659"
+                            width={241}
+                            height={168}
+                            priority={true}
+                        />
+                        <Image
+                            src="/static/images/Mn0ecH_20220711153127215.png"
+                            alt="Mn0ecH_20220711153127215"
+                            width={241}
+                            height={168}
+                            priority={true}
+                        />
+                    </>
+                )}
             </div>
         </div>
     );
-};
-
-const OverThan960Content1 = () => {
-    const windowInnerWidth = useRecoilValue(windowInnerWidthRecoil);
-    const loading = useRecoilValue(loadingRecoil);
-    return (
-        <div className="relative h-[32vw] bg-[url('/static/images/2023_m_spring2_promotion_bg.jpg')] bg-cover">
-            <div
-                className="absolute top-[37%] left-[13.3%] w-[19%] opacity-0 animate-fade-in"
-                style={{ animationDelay: "5500ms" }}
-            >
-                <Image
-                    src="/static/images/2023_m_spring2_top_logo.png"
-                    alt="2023_m_spring2_top_logo"
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    className="w-full"
-                    priority={true}
-                />
-            </div>
-            <div
-                className="absolute top-[14%] left-[34.8%] w-[18%] opacity-0 animate-fade-in"
-                style={{ animationDelay: "6000ms" }}
-            >
-                <Image
-                    src="/static/images/2023_spring2_top_drink2.png"
-                    alt="2023_spring2_top_drink2"
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    className="w-full"
-                    priority={true}
-                />
-            </div>
-            <div
-                className="absolute top-[10.8%] left-[49.5%] w-[15.8%] opacity-0 animate-fade-in"
-                style={{ animationDelay: "6500ms" }}
-            >
-                <Image
-                    src="/static/images/2023_spring2_top_drink1.png"
-                    alt="2023_spring2_top_drink1"
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    className="w-full"
-                    priority={true}
-                />
-            </div>
-            <div
-                className="absolute top-[15.8%] right-[20.8%] w-[18.2%] opacity-0 animate-fade-in"
-                style={{ animationDelay: "7000ms" }}
-            >
-                <Image
-                    src="/static/images/2023_spring2_top_drink3.png"
-                    alt="2023_spring2_top_drink3"
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    className="w-full"
-                    priority={true}
-                />
-            </div>
-            <div
-                className="absolute top-[56%] left-[13.3%] w-[19%] text-center opacity-0 animate-fade-in"
-                style={{ animationDelay: "7400ms" }}
-            >
-                <button className="w-[70%] truncate px-1 py-2 text-[#014938] text-[22px] border-[2px] border-[#014938] rounded-md hover:bg-[#014938] hover:underline hover:text-white duration-300">
-                    자세히 보기
-                </button>
-            </div>
-
-            <div
-                className="right-[1%] fixed top-[154px] w-[140px] ml-[485px] z-[11]"
-                style={{
-                    left: windowInnerWidth > 1400 ? "54.5%" : "auto",
-                }}
-            >
-                <Image
-                    src="/static/images/gq5gfg_20230407112627089.png"
-                    alt="gq5gfg_20230407112627089"
-                    width={140}
-                    height={96}
-                    priority={true}
-                />
-                <Image
-                    src="/static/images/Mn0ecH_20220711153123340.png"
-                    alt="Mn0ecH_20220711153123340"
-                    width={140}
-                    height={96}
-                    priority={true}
-                />
-            </div>
-        </div>
-    );
-};
-
-const Content1 = () => {
-    const windowInnerWidth = useRecoilValue(windowInnerWidthRecoil);
-    return windowInnerWidth > 960 ? <OverThan960Content1 /> : <LessThan960Content1 />;
 };
 
 export default Content1;

@@ -14,7 +14,7 @@ const Content5 = () => {
         >
             {windowInnerWidth > 930 ? (
                 <>
-                    <div className="pt-[52px] max-w-[1080px] w-full mx-auto pl-[150px]">
+                    <div className="relative pt-[52px] max-w-[1080px] w-full mx-auto pl-[150px] z-[1]">
                         <div className="min-w-[329px]">
                             <Image
                                 src="/static/images/230125_pc_reserve_logo.png"
@@ -55,8 +55,10 @@ const Content5 = () => {
                             priority={true}
                         />
                     </div>
-                    <div className="absolute bottom-[10%] left-[50%] -translate-x-1/2">
-                        <a className="inline-block w-[125px] h-[38px] border-[2px] border-white rounded-[5px] text-white text-[15px] text-center leading-[34px] cursor-pointer hover:text-[#111111] hover:underline hover:bg-white duration-300">
+                    <div className="absolute bottom-[8%] left-[50%] -translate-x-1/2 w-[40%] h-[7%]">
+                        <a className="inline-block w-full h-full border-[2px] border-white rounded-[3px] text-white text-center leading-[11vw] cursor-pointer hover:text-[#111111] hover:underline hover:bg-white duration-300" style={{
+                            fontSize: windowInnerWidth > 480 ? 22 : 16
+                        }}>
                             자세히 보기
                         </a>
                     </div>

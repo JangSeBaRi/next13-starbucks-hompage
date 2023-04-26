@@ -9,7 +9,7 @@ const windowInnerWidthRecoil = atom({
 
 const loadingRecoil = atom({
     key: "loadingRecoil",
-    default: true,
+    default: false,
 });
 
 const openDrawerRecoil = atom({
