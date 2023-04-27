@@ -6,75 +6,54 @@ import { useEffect, useState } from "react";
 const Loading = () => {
     const [borderRightWidth, setBorderRightWidth] = useState<number>(2);
     const [showFilter, setShowFilter] = useState<boolean>(false);
-    const [showLastFilter, setShowLastFilter] = useState<boolean>(false);
     const [colorWhite, setColorWhite] = useState<boolean>(true);
     const [opcityZero, setOpcityZero] = useState<boolean>(false);
     useEffect(() => {
         setTimeout(async () => {
-            setBorderRightWidth(0)
+            setBorderRightWidth(0);
             await delay(30);
             setShowFilter(true);
             setColorWhite(true);
             await delay(30);
-            setShowFilter(false);
             setColorWhite(false);
             await delay(30);
-            setShowFilter(true);
             setColorWhite(true);
             await delay(30);
-            setShowFilter(false);
             setColorWhite(false);
             await delay(30);
-            setShowFilter(true);
             setColorWhite(true);
             await delay(30);
-            setShowFilter(false);
             setColorWhite(false);
             await delay(30);
-            setShowFilter(true);
             setColorWhite(true);
             await delay(30);
-            setShowFilter(false);
             setColorWhite(false);
             await delay(30);
-            setShowFilter(true);
             setColorWhite(true);
             await delay(30);
-            setShowFilter(false);
             setColorWhite(false);
             await delay(30);
-            setShowFilter(true);
             setColorWhite(true);
             await delay(30);
-            setShowFilter(false);
             setColorWhite(false);
             await delay(30);
-            setShowFilter(true);
             setColorWhite(true);
             await delay(30);
-            setShowFilter(false);
             setColorWhite(false);
             await delay(30);
-            setShowFilter(true);
             setColorWhite(true);
             await delay(30);
-            setShowFilter(false);
             setColorWhite(false);
             await delay(30);
-            setShowFilter(true);
             setColorWhite(true);
             await delay(30);
-            setShowFilter(false);
             setColorWhite(false);
             await delay(30);
-            setShowFilter(true);
             setColorWhite(true);
             await delay(30);
-            setShowFilter(false);
             setColorWhite(false);
             await delay(700);
             setShowFilter(true);
-            setShowLastFilter(true);
             setColorWhite(true);
             await delay(1000);
             setOpcityZero(true);
@@ -89,7 +68,11 @@ const Loading = () => {
                 <h1 className="text-[6vw] font-bold text-[#2c2a29]">Starbucks Korea</h1>
                 <h1
                     className="absolute top-0 left-0 text-[6vw] font-bold whitespace-nowrap text-white overflow-hidden border-r-white animate-text-animation"
-                    style={{ filter: showLastFilter ? "drop-shadow(0 0 20px #fff) drop-shadow(0 0 20px #fff)" : showFilter ? "drop-shadow(0 0 20px #fff)" : undefined, borderRightWidth: borderRightWidth, color: colorWhite ? "white" : "#2c2a29" }}
+                    style={{
+                        filter: showFilter ? "drop-shadow(0 0 10px #fff)" : undefined,
+                        borderRightWidth: borderRightWidth,
+                        color: colorWhite ? "white" : "#2c2a29",
+                    }}
                 >
                     Starbucks Korea
                 </h1>
