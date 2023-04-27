@@ -15,7 +15,13 @@ export default function ReactLifeCycleSetting({ children }: Props) {
     const setWindowInnerWidth = useSetRecoilState(windowInnerWidthRecoil);
 
     useEffect(() => {
+        document.querySelector("html")!!.scrollTo({ top: 0, behavior: "auto" });
         setWindowInnerWidth(window.innerWidth);
+        (async () => {
+            await delay(5500);
+            setLoading(false);
+            document.querySelector("html")!!.style.overflowY = "scroll";
+        })();
         const handleResizeWindow = () => {
             setWindowInnerWidth(window.innerWidth);
         };
@@ -23,14 +29,6 @@ export default function ReactLifeCycleSetting({ children }: Props) {
         return () => {
             window.removeEventListener("resize", handleResizeWindow);
         };
-    }, []);
-
-    useEffect(() => {
-        (async () => {
-            await delay(5500);
-            setLoading(false);
-            document.querySelector("html")!!.style.overflowY = "scroll";
-        })();
     }, []);
 
     return (
