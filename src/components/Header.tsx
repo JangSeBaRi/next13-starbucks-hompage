@@ -3,7 +3,6 @@
 import { gnbList, subGnbList, subGnbMenuObject } from "@/constant/header";
 import { openDrawerRecoil, windowInnerWidthRecoil } from "@/recoil/states";
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -22,7 +21,7 @@ const LessThan960Header = () => {
     return (
         <header className="fixed left-0 top-0 z-[10] flex items-center w-full h-[70px] bg-[#f6f5ef] px-[10px] justify-between">
             <h1 className="min-w-[45px]">
-                <a onClick={handleClickLogo}>
+                <a onClick={handleClickLogo} className="cursor-pointer">
                     <Image src="/static/images/logo.png" width={45} height={45} alt="logo" priority={true} />
                 </a>
             </h1>
@@ -120,7 +119,7 @@ const OverThan960Header = () => {
         <header className="fixed left-0 top-0 z-[10] h-[126px] bg-[#f6f5ef] flex flex-col justify-center w-full items-center">
             <div className="max-w-[1120px] w-full h-full flex items-center justify-between pl-[20px]">
                 <h1>
-                    <a onClick={handleClickLogo}>
+                    <a onClick={handleClickLogo} className="cursor-pointer">
                         <Image src="/static/images/logo.png" width={70} height={70} alt="logo" priority={true} />
                     </a>
                 </h1>
