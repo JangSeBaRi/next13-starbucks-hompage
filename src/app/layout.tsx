@@ -3,6 +3,7 @@ import RecoilPreferences from "@/app/recoilPreferences";
 import ReactLifeCycleSetting from "@/app/reactLifeCycleSetting";
 import ContentLayout from "@/app/contentLayout";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import Drawer from "@/components/Drawer";
 
 export const metadata = {
@@ -16,9 +17,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body>
                 <RecoilPreferences>
                     <ReactLifeCycleSetting>
-                    <Header />
-                    <Drawer />
-                    <ContentLayout>{children}</ContentLayout>
+                        <Header />
+                        <ContentLayout>{children}</ContentLayout>
+                        <Footer />
+                        <Drawer />
                     </ReactLifeCycleSetting>
                 </RecoilPreferences>
             </body>

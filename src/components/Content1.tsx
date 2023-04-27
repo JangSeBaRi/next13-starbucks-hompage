@@ -135,7 +135,7 @@ const Content1 = () => {
                     className="whitespace-nowrap truncate text-[#005224] border-[2px] border-[#014938] hover:bg-[#014938] hover:underline hover:text-white"
                     style={Object.assign(
                         {
-                            transition: "background-color 0.3s, color 0.3s",
+                            transition: "background-color 0.5s, color 0.5s",
                             fontSize:
                                 windowInnerWidth > 960
                                     ? 15

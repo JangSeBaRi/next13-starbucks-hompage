@@ -5,6 +5,7 @@ import Content4 from "@/components/Content4";
 import Content5 from "@/components/Content5";
 import Content6 from "@/components/Content6";
 import Content7 from "@/components/Content7";
+import Content8 from "@/components/Content8";
 
 const Home = () => {
     return (
@@ -12,10 +13,11 @@ const Home = () => {
             <Content1 />
             <Content2 />
             <Content3 />
-            <Content4/>
-            <Content5/>
-            <Content6/>
-            <Content7/>
+            <Content4 />
+            <Content5 />
+            <Content6 />
+            <Content7 />
+            <Content8 />
         </>
     );
 };

@@ -180,7 +180,7 @@ const ImageSwiper = () => {
     return (
         <div
             id="image_list_wrap"
-            className="bg-[#f6f5ef] flex flex-col items-center overflow-hidden duration-300"
+            className="bg-[#f6f5ef] flex flex-col items-center overflow-hidden duration-500"
             style={{
                 height:
                     windowInnerWidth > 960 ? 660 : windowInnerWidth > 375 ? 488 : windowInnerWidth > 320 ? 395 : 350,
@@ -228,7 +228,7 @@ const ImageSwiper = () => {
                                 >
                                     {component}
                                     <a
-                                        className="absolute left-[50%] -translate-x-1/2 w-[125px] h-[38px] border-[2px] border-[#222222] rounded-[3px] text-[#222222] text-[14px] text-center leading-[32px] hover:bg-[#222222] hover:text-white duration-300 hover:underline cursor-pointer"
+                                        className="absolute left-[50%] -translate-x-1/2 w-[125px] h-[38px] border-[2px] border-[#222222] rounded-[3px] text-[#222222] text-[14px] text-center leading-[32px] hover:bg-[#222222] hover:text-white duration-500 hover:underline cursor-pointer"
                                         style={{
                                             bottom: windowInnerWidth > 960 ? 10 : windowInnerWidth > 500 ? -12 : -45,
                                         }}

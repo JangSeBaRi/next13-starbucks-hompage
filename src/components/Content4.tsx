@@ -93,7 +93,7 @@ const Content4 = () => {
                         }
                     >
                         <a
-                            className="inline-block w-full h-full border-[2px] border-[#e54360] text-[#e54360] text-center leading-[34px] cursor-pointer hover:text-white hover:underline hover:bg-[#e54360] duration-300"
+                            className="inline-block w-full h-full border-[2px] border-[#e54360] text-[#e54360] text-center leading-[34px] cursor-pointer hover:text-white hover:underline hover:bg-[#e54360] duration-500"
                             style={
                                 windowInnerWidth > 960
                                     ? { fontSize: 15, borderRadius: 5 }

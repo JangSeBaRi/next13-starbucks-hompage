@@ -68,7 +68,7 @@ const Content6 = () => {
                         <div className="w-[125px] h-[38px] border-[2px] rounded-[3px] border-white absolute left-[227px] top-[570px]">
                             <a
                                 className="inline-block text-[15px] w-full h-full leading-[34px] text-center text-white hover:text-[#111111] hover:bg-white hover:underline cursor-pointer"
-                                style={{ transition: "background-color 0.3s, color 0.3s" }}
+                                style={{ transition: "background-color 0.5s, color 0.5s" }}
                             >
                                 자세히 보기
                             </a>
@@ -103,7 +103,7 @@ const Content6 = () => {
                                 className="inline-block w-full h-full border-[2px] border-white rounded-[3px] text-white text-center leading-[11vw] cursor-pointer hover:text-[#111111] hover:underline hover:bg-white"
                                 style={{
                                     fontSize: windowInnerWidth > 480 ? 22 : 16,
-                                    transition: "background-color 0.3s, color 0.3s"
+                                    transition: "background-color 0.5s, color 0.5s"
                                 }}
                             >
                                 자세히 보기

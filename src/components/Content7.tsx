@@ -71,17 +71,6 @@ const Content7 = () => {
                     />
                 )}
             </div>
-            {/* <div className="absolute bottom-[8%] left-[50%] -translate-x-1/2 w-[40%] h-[5%]">
-                            <a
-                                className="inline-block w-full h-full border-[2px] border-white rounded-[3px] text-white text-center leading-[11vw] cursor-pointer hover:text-[#111111] hover:underline hover:bg-white"
-                                style={{
-                                    fontSize: windowInnerWidth > 480 ? 22 : 16,
-                                    transition: "background-color 0.3s, color 0.3s"
-                                }}
-                            >
-                                자세히 보기
-                            </a>
-                        </div> */}
             <div
                 className="absolute w-full left-0 right-0 max-w-[1100px] mx-auto"
                 style={
@@ -105,7 +94,7 @@ const Content7 = () => {
                         className=" block mx-auto w-[125px] h-full text-black text-center border-[2px] border-black rounded-[5px] hover:bg-black hover:text-white hover:underline cursor-pointer"
                         style={Object.assign(
                             {
-                                transition: "background-color 0.3s, color 0.3s",
+                                transition: "background-color 0.5s, color 0.5s",
                                 fontSize: windowInnerWidth > 930 ? 15 : windowInnerWidth > 480 ? 22 : 16,
                             },
                             windowInnerWidth > 930

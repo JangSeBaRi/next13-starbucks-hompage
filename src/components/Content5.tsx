@@ -25,7 +25,7 @@ const Content5 = () => {
                             />
                         </div>
                         <div className="w-[329px] flex flex-col items-center mt-[39px]">
-                            <a className="w-[125px] h-[38px] border-[2px] border-white rounded-[5px] text-white text-[15px] text-center leading-[34px] cursor-pointer hover:text-[#111111] hover:underline hover:bg-white duration-300">
+                            <a className="w-[125px] h-[38px] border-[2px] border-white rounded-[5px] text-white text-[15px] text-center leading-[34px] cursor-pointer hover:text-[#111111] hover:underline hover:bg-white duration-500">
                                 자세히 보기
                             </a>
                         </div>
@@ -56,9 +56,12 @@ const Content5 = () => {
                         />
                     </div>
                     <div className="absolute bottom-[8%] left-[50%] -translate-x-1/2 w-[40%] h-[7%]">
-                        <a className="inline-block w-full h-full border-[2px] border-white rounded-[3px] text-white text-center leading-[11vw] cursor-pointer hover:text-[#111111] hover:underline hover:bg-white duration-300" style={{
-                            fontSize: windowInnerWidth > 480 ? 22 : 16
-                        }}>
+                        <a
+                            className="inline-block w-full h-full border-[2px] border-white rounded-[3px] text-white text-center leading-[11vw] cursor-pointer hover:text-[#111111] hover:underline hover:bg-white duration-500"
+                            style={{
+                                fontSize: windowInnerWidth > 480 ? 22 : 16,
+                            }}
+                        >
                             자세히 보기
                         </a>
                     </div>

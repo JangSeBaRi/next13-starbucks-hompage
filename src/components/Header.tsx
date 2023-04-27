@@ -5,7 +5,7 @@ import { openDrawerRecoil, windowInnerWidthRecoil } from "@/recoil/states";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 const LessThan960Header = () => {
@@ -23,7 +23,7 @@ const LessThan960Header = () => {
         <header className="fixed left-0 top-0 z-[10] flex items-center w-full h-[70px] bg-[#f6f5ef] px-[10px] justify-between">
             <h1 className="min-w-[45px]">
                 <a onClick={handleClickLogo}>
-                    <Image src="/static/images/logo.png" width={45} height={45} alt="logo" priority={true}></Image>
+                    <Image src="/static/images/logo.png" width={45} height={45} alt="logo" priority={true} />
                 </a>
             </h1>
             <ul className="h-full flex items-center justify-end gap-8">
@@ -34,7 +34,7 @@ const LessThan960Header = () => {
                         height={30}
                         alt="icon_user_m"
                         priority={true}
-                    ></Image>
+                    />
                 </li>
                 <li className="min-w-[24px] cursor-pointer">
                     <Image
@@ -43,7 +43,7 @@ const LessThan960Header = () => {
                         height={32}
                         alt="icon_spot_m"
                         priority={true}
-                    ></Image>
+                    />
                 </li>
                 <li
                     className="min-w-[28px] cursor-pointer"
@@ -57,7 +57,7 @@ const LessThan960Header = () => {
                         height={26}
                         alt="btn_berger_m"
                         priority={true}
-                    ></Image>
+                    />
                 </li>
             </ul>
         </header>
@@ -66,8 +66,19 @@ const LessThan960Header = () => {
 
 const OverThan960Header = () => {
     const [activeSubGnb, setActiveSubGnb] = useState<string>("");
+    const [searchMode, setSearchMode] = useState<boolean>(false);
+    const [searchText, setSearchText] = useState<string>("");
     const router = useRouter();
     const pathname = usePathname();
+    const search = () => {
+        const trimSearchText = searchText.trim();
+        setSearchText(trimSearchText);
+        if (trimSearchText) {
+            alert(`${searchText} 검색`);
+        } else {
+            alert("검색어를 입력해 주세요.");
+        }
+    };
     const handleClickLogo = () => {
         if (pathname === "/") {
             document.querySelector("html")!!.scrollTo({ behavior: "smooth", top: 0 });
@@ -75,12 +86,42 @@ const OverThan960Header = () => {
             router.push("/");
         }
     };
+    const handleClickMagnifier = (e: React.MouseEvent<HTMLElement>) => {
+        if (searchMode) {
+            search();
+        } else {
+            setSearchMode(true);
+            const searchInputEl = e.currentTarget.previousSibling as HTMLInputElement;
+            searchInputEl.focus();
+        }
+    };
+
+    const handleKeyDownSearchInput = (e: React.KeyboardEvent<HTMLElement>) => {
+        if (!e.nativeEvent.isComposing && e.code == "Enter") {
+            search();
+        }
+    };
+
+    useEffect(() => {
+        const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+            if (e.code == "Escape") {
+                const searchInputEl = e.currentTarget.querySelector('#search_input')!! as HTMLInputElement
+                setSearchMode(false);
+                setSearchText("");
+                searchInputEl.blur()
+            }
+        };
+        document.querySelector("html")!!.addEventListener("keydown", (e : any) => handleKeyDown(e));
+        return () => {
+            document.querySelector("html")!!.removeEventListener("keydown", (e : any) => handleKeyDown(e));
+        }
+    }, []);
     return (
         <header className="fixed left-0 top-0 z-[10] h-[126px] bg-[#f6f5ef] flex flex-col justify-center w-full items-center">
             <div className="max-w-[1120px] w-full h-full flex items-center justify-between pl-[20px]">
                 <h1>
                     <a onClick={handleClickLogo}>
-                        <Image src="/static/images/logo.png" width={70} height={70} alt="logo" priority={true}></Image>
+                        <Image src="/static/images/logo.png" width={70} height={70} alt="logo" priority={true} />
                     </a>
                 </h1>
                 <nav className="flex flex-col items-end justify-between h-full">
@@ -98,14 +139,35 @@ const OverThan960Header = () => {
                                 );
                             })}
                         </ul>
-                        <div className="w-[36px] h-[36px] bg-white rounded-[5px] border-[2px] border-[#cccccc] flex justify-center items-center">
-                            <Image
-                                src="/static/images/icon_magnifier_black.png"
-                                width={20}
-                                height={21}
-                                alt="icon_magnifier_black"
-                                priority={true}
-                            ></Image>
+                        <div className="relative">
+                            <input
+                                id="search_input"
+                                type="text"
+                                className="w-[36px] h-[36px] bg-white rounded-[5px] border-[2px] border-[#cccccc] pr-[33px] duration-1000"
+                                style={{
+                                    transition: "width 0.5s, padding-left 0.5s",
+                                    width: searchMode ? 200 : 36,
+                                    paddingLeft: searchMode ? 15 : 0,
+                                }}
+                                placeholder="Esc 누르면 닫힙니다."
+                                value={searchText}
+                                onChange={(e) => {
+                                    setSearchText(e.currentTarget.value);
+                                }}
+                                onKeyDown={(e) => handleKeyDownSearchInput(e)}
+                            />
+                            <a
+                                className="absolute top-0 right-0 flex items-center justify-center w-[36px] h-[36px] rounded-[5px] cursor-pointer"
+                                onClick={(e) => handleClickMagnifier(e)}
+                            >
+                                <Image
+                                    src="/static/images/icon_magnifier_black.png"
+                                    width={20}
+                                    height={21}
+                                    alt="icon_magnifier_black"
+                                    priority={true}
+                                />
+                            </a>
                         </div>
                     </div>
                     <ul className="flex">
@@ -162,9 +224,7 @@ const OverThan960Header = () => {
                             return (
                                 <li key={title} className="w-[220px]">
                                     <p className="text-white text-[14px] w-full h-[31px] pt-[3px] pb-[12px]">
-                                        <a href="javascript(0):void" className="hover:underline hover:cursor-pointer">
-                                            {title}
-                                        </a>
+                                        <a className="hover:underline hover:cursor-pointer">{title}</a>
                                     </p>
                                     <ul>
                                         {items.map((item) => {
@@ -174,12 +234,7 @@ const OverThan960Header = () => {
                                                     key={label}
                                                     className="text-[#999999] text-[12px] h-[22px] w-full py-[3px]"
                                                 >
-                                                    <a
-                                                        href="javascript(0):void"
-                                                        className="hover:underline hover:cursor-pointer"
-                                                    >
-                                                        {label}
-                                                    </a>
+                                                    <a className="hover:underline hover:cursor-pointer">{label}</a>
                                                 </li>
                                             );
                                         })}
