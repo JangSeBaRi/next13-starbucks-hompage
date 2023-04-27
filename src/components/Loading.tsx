@@ -94,7 +94,7 @@ const Loading = () => {
                     Starbucks Korea
                 </h1>
             </div>
-            <h1 className="text-[3vw] font-bold  text-white mb-[10vh]">Made by JangSeBaRi</h1>
+            <h1 className="text-[1vw] font-bold  text-white mb-[10vh]">Made by JangSeBaRi</h1>
         </div>
     );
 };
