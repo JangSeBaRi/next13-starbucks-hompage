@@ -8,28 +8,33 @@ import { useRecoilValue } from "recoil";
 const Content4 = () => {
     const windowInnerWidth = useRecoilValue(windowInnerWidthRecoil);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const html = document.querySelector("html")!!;
-            const content4El = document.querySelector("#content_4") as HTMLDivElement;
-            const animation1El = document.querySelector("#animation_1") as HTMLDivElement;
-            const animation2El = document.querySelector("#animation_2") as HTMLDivElement;
-            if (content4El.offsetTop + content4El.offsetHeight / 3 < html.clientHeight + html.scrollTop) {
-                animation1El.style.opacity = "1";
-                animation2El.style.opacity = "1";
-                if (windowInnerWidth > 960) {
-                    animation1El.style.left = "5%";
-                    animation2El.style.right = "12%";
-                }
-            } else {
-                animation1El.style.opacity = "0";
-                animation2El.style.opacity = "0";
-                if (windowInnerWidth > 960) {
-                    animation1El.style.left = "-70%";
-                    animation2El.style.right = "-60%";
-                }
+    const handleScroll = () => {
+        const html = document.querySelector("html")!!;
+        const content4El = document.querySelector("#content_4") as HTMLDivElement;
+        const animation1El = content4El.querySelector("#animation_1") as HTMLDivElement;
+        const animation2El = content4El.querySelector("#animation_2") as HTMLDivElement;
+        if (content4El.offsetTop + content4El.offsetHeight / 3 < html.clientHeight + html.scrollTop) {
+            animation1El.style.opacity = "1";
+            animation2El.style.opacity = "1";
+            if (windowInnerWidth > 960) {
+                animation1El.style.left = "5%";
+                animation2El.style.right = "12%";
             }
-        };
+        } else {
+            animation1El.style.opacity = "0";
+            animation2El.style.opacity = "0";
+            if (windowInnerWidth > 960) {
+                animation1El.style.left = "-70%";
+                animation2El.style.right = "-60%";
+            }
+        }
+    };
+
+    useEffect(() => {
+        handleScroll();
+    }, []);
+
+    useEffect(() => {
         window.addEventListener("scroll", handleScroll);
         return () => {
             window.removeEventListener("scroll", handleScroll);

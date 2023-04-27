@@ -2,13 +2,72 @@
 
 import { windowInnerWidthRecoil } from "@/recoil/states";
 import Image from "next/image";
+import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 
 const Content8 = () => {
     const windowInnerWidth = useRecoilValue(windowInnerWidthRecoil);
 
+    const handleScroll = () => {
+        const html = document.querySelector("html")!!;
+        const content8El = document.querySelector("#content_8") as HTMLDivElement;
+        const animation1El = content8El!!.querySelector("#animation_1") as HTMLDivElement;
+        const animation2El = content8El!!.querySelector("#animation_2") as HTMLDivElement;
+        const animation3El = content8El!!.querySelector("#animation_3") as HTMLDivElement;
+        if (content8El.offsetTop + content8El.offsetHeight * 0.7 < html.clientHeight + html.scrollTop) {
+            animation1El.style.opacity = "1";
+            animation2El.style.opacity = "1";
+            animation3El.style.opacity = "1";
+            if (windowInnerWidth > 960) {
+                animation1El.style.right = "162px";
+                animation2El.style.right = "168px";
+                animation3El.style.right = "416px";
+            } else if (windowInnerWidth > 480) {
+                animation1El.style.top = "390px";
+            } else {
+                animation1El.style.top = "385px";
+            }
+        } else {
+            animation1El.style.opacity = "0";
+            animation2El.style.opacity = "0";
+            animation3El.style.opacity = "0";
+            if (windowInnerWidth > 960) {
+                animation1El.style.right = 162 - 1000 + "px";
+                animation2El.style.right = 168 - 1000 + "px";
+                animation3El.style.right = 416 - 1000 + "px";
+            } else {
+                animation1El.style.top = "0px";
+            }
+        }
+        if (content8El.offsetTop + content8El.offsetHeight * 0.83 < html.clientHeight + html.scrollTop) {
+            if (windowInnerWidth <= 960) {
+                if (windowInnerWidth > 480) {
+                    animation2El.style.bottom = "-604px";
+                } else {
+                    animation2El.style.bottom = "-540px";
+                }
+            }
+        } else {
+            if (windowInnerWidth <= 960) {
+                animation2El.style.bottom = "-800px";
+            }
+        }
+    };
+
+    useEffect(() => {
+        handleScroll();
+    }, []);
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [windowInnerWidth]);
+
     return (
         <div
+            id="content_8"
             className="relative bg-[url('/static/images/store_bg.jpg')] overflow-hidden"
             style={{ height: windowInnerWidth > 960 ? 400 : 750, backgroundSize: "100% auto" }}
         >
@@ -57,21 +116,24 @@ const Content8 = () => {
                     }
                 />
                 <div
-                    className="absolute"
+                    id="animation_1"
+                    className="absolute opacity-0"
                     style={
                         windowInnerWidth > 960
                             ? {
+                                  transition: "opacity 3s, right 3s",
                                   backgroundImage: "url('/static/images/221212_pc_main_story_txt_1.png')",
-                                  right: 162,
+                                  right: 162 - 1000,
                                   top: 100,
                                   width: 374,
                                   height: 54,
                               }
                             : windowInnerWidth > 480
                             ? {
+                                  transition: "opacity 1s, top 1s",
                                   backgroundImage: "url('/static/images/221213_m_main_story_txt_1.png')",
-                                  right: 162,
-                                  top: 390,
+                                  right: 162 - 1000,
+                                  top: 0,
                                   width: 440,
                                   height: 64,
                                   left: "50%",
@@ -79,9 +141,10 @@ const Content8 = () => {
                                   backgroundSize: "100% auto",
                               }
                             : {
+                                  transition: "opacity 1s, top 1s",
                                   backgroundImage: "url('/static/images/221213_m_main_story_txt_1.png')",
-                                  right: 162,
-                                  top: 385,
+                                  right: 162 - 1000,
+                                  top: 0,
                                   width: 312,
                                   height: 45,
                                   left: "50%",
@@ -91,21 +154,24 @@ const Content8 = () => {
                     }
                 />
                 <div
-                    className="absolute"
+                    id="animation_2"
+                    className="absolute opacity-0"
                     style={
                         windowInnerWidth > 960
                             ? {
+                                  transition: "opacity 3s, right 3.5s",
                                   backgroundImage: "url('/static/images/221212_pc_main_story_txt_2.png')",
-                                  right: 168,
+                                  right: 168 - 1000,
                                   top: 168,
                                   width: 366,
                                   height: 92,
                               }
                             : windowInnerWidth > 480
                             ? {
+                                  transition: "opacity 1s, bottom 1s",
                                   backgroundImage: "url('/static/images/221212_m_main_story_txt_2.png')",
-                                  right: 168,
-                                  top: 474,
+                                  right: 168 - 1000,
+                                  bottom: -800,
                                   width: 440,
                                   height: 130,
                                   left: "50%",
@@ -113,9 +179,10 @@ const Content8 = () => {
                                   backgroundSize: "100% auto",
                               }
                             : {
+                                  transition: "opacity 1s, bottom 1s",
                                   backgroundImage: "url('/static/images/221212_m_main_story_txt_2.png')",
-                                  right: 168,
-                                  top: 450,
+                                  right: 168 - 1000,
+                                  bottom: -800,
                                   width: 300,
                                   height: 89,
                                   left: "50%",
@@ -125,13 +192,21 @@ const Content8 = () => {
                     }
                 />
                 <div
-                    className="absolute border-[2px] border-[#222] rounded-[3px] leading-[34px]"
+                    id="animation_3"
+                    className="absolute border-[2px] border-[#222] rounded-[3px] leading-[34px] opacity-0"
                     style={
                         windowInnerWidth > 960
-                            ? { right: 408, top: 290, width: 121, height: 34 }
+                            ? {
+                                  transition: "opacity 3s, right 4s",
+                                  right: 416 - 1000,
+                                  top: 290,
+                                  width: 121,
+                                  height: 34,
+                              }
                             : windowInnerWidth > 480
                             ? {
-                                  right: 408,
+                                  transition: "opacity 3s",
+                                  right: 416 - 1000,
                                   top: 640,
                                   width: 121,
                                   height: 34,
@@ -139,7 +214,8 @@ const Content8 = () => {
                                   transform: "translateX(-50%)",
                               }
                             : {
-                                  right: 408,
+                                  transition: "opacity 3s",
+                                  right: 416 - 1000,
                                   top: 560,
                                   width: 121,
                                   height: 34,

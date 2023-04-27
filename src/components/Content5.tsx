@@ -2,13 +2,46 @@
 
 import { windowInnerWidthRecoil } from "@/recoil/states";
 import Image from "next/image";
+import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 
 const Content5 = () => {
     const windowInnerWidth = useRecoilValue(windowInnerWidthRecoil);
 
+    const handleScroll = () => {
+        const html = document.querySelector("html")!!;
+        const content5El = document.querySelector("#content_5") as HTMLDivElement;
+        const animation1El = content5El.querySelector("#animation_1") as HTMLDivElement;
+        const animation2El = content5El.querySelector("#animation_2") as HTMLDivElement;
+        if (content5El.offsetTop + content5El.offsetHeight / 3 < html.clientHeight + html.scrollTop) {
+            if (windowInnerWidth > 930) {
+                animation1El.style.opacity = "1";
+            } else {
+                animation2El.style.opacity = "1";
+            }
+        } else {
+            if (windowInnerWidth > 930) {
+                animation1El.style.opacity = "0";
+            } else {
+                animation2El.style.opacity = "0";
+            }
+        }
+    };
+
+    useEffect(() => {
+        handleScroll();
+    }, []);
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [windowInnerWidth]);
+
     return (
         <div
+            id="content_5"
             className="relative bg-[url('/static/images/230125_pc_reserve_bg.jpg')] bg-cover bg-center"
             style={{ height: windowInnerWidth > 1120 ? 400 : windowInnerWidth > 930 ? 357 : "100%" }}
         >
@@ -30,7 +63,11 @@ const Content5 = () => {
                             </a>
                         </div>
                     </div>
-                    <div className="absolute top-0 left-0 w-full flex flex-col items-center">
+                    <div
+                        id="animation_1"
+                        className="absolute top-0 left-0 w-full flex flex-col items-center opacity-0"
+                        style={{ transition: "opacity 3s" }}
+                    >
                         <div className="min-w-[2000px]">
                             <Image
                                 src="/static/images/230127_reserve_coffee_bg.png"
@@ -44,7 +81,7 @@ const Content5 = () => {
                 </>
             ) : (
                 <>
-                    <div className="w-full">
+                    <div className="w-full opacity-0" id="animation_2" style={{ transition: "opacity 3s" }}>
                         <Image
                             src="/static/images/230125_m_reserve_bg.jpg"
                             alt="230125_m_reserve_bg"

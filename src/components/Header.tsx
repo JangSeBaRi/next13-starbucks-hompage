@@ -105,10 +105,10 @@ const OverThan960Header = () => {
     useEffect(() => {
         const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
             if (e.code == "Escape") {
-                const searchInputEl = e.currentTarget.querySelector('#search_input')!! as HTMLInputElement
+                const searchInputEl = e.currentTarget.querySelector('#search_input') as HTMLInputElement
                 setSearchMode(false);
                 setSearchText("");
-                searchInputEl.blur()
+                searchInputEl?.blur()
             }
         };
         document.querySelector("html")!!.addEventListener("keydown", (e : any) => handleKeyDown(e));

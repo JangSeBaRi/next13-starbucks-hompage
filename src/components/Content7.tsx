@@ -2,13 +2,37 @@
 
 import { windowInnerWidthRecoil } from "@/recoil/states";
 import Image from "next/image";
+import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 
 const Content7 = () => {
     const windowInnerWidth = useRecoilValue(windowInnerWidthRecoil);
 
+    const handleScroll = () => {
+        const html = document.querySelector("html")!!;
+        const content7El = document.querySelector("#content_7") as HTMLDivElement;
+        const animation1El = content7El?.querySelector("#animation_1") as HTMLDivElement;
+        if (content7El.offsetTop + content7El.offsetHeight / 3 < html.clientHeight + html.scrollTop) {
+            animation1El.style.opacity = "1";
+        } else {
+            animation1El.style.opacity = "0";
+        }
+    };
+
+    useEffect(() => {
+        handleScroll();
+    }, []);
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [windowInnerWidth]);
+
     return (
         <div
+            id="content_7"
             className="relative bg-[url('/static/images/reserve_bg_pc.png')] bg-no-repeat"
             style={
                 windowInnerWidth > 1120
@@ -38,18 +62,21 @@ const Content7 = () => {
                 />
             </div>
             <div
-                style={
+                id="animation_1"
+                className="opacity-0"
+                style={Object.assign(
+                    { transition: "opacity 3s" },
                     windowInnerWidth > 930
                         ? {
-                              position: "absolute",
+                            position: 'absolute',
                               top: 0,
                               left: "auto",
                               bottom: "auto",
                               right: "50%",
                               marginRight: -483,
                           }
-                        : { top: 0, bottom: 0, right: "auto", width: "100%" }
-                }
+                        : { position: 'static', top: 0, bottom: 0, right: "auto", width: "100%" }
+                )}
             >
                 {windowInnerWidth > 930 ? (
                     <Image
@@ -98,7 +125,7 @@ const Content7 = () => {
                                 fontSize: windowInnerWidth > 930 ? 15 : windowInnerWidth > 480 ? 22 : 16,
                             },
                             windowInnerWidth > 930
-                                ? { width: 125, lineHeight: '34px' }
+                                ? { width: 125, lineHeight: "34px" }
                                 : { width: "40%", lineHeight: "10vw" }
                         )}
                     >
