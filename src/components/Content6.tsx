@@ -15,7 +15,7 @@ const Content6 = () => {
             const animation1El = content6El.querySelector("#animation_1") as HTMLDivElement;
             const animation2El = content6El.querySelector("#animation_2") as HTMLDivElement;
             const animation3El = content6El.querySelector("#animation_3") as HTMLDivElement;
-            if (content6El.offsetTop + content6El.offsetHeight / 3 < html.clientHeight + html.scrollTop) {
+            if (content6El.offsetTop + content6El.offsetHeight * 0.5 < html.clientHeight + html.scrollTop) {
                 animation1El.style.left = "100px";
                 animation2El.style.left = "0px";
                 animation1El.style.opacity = "1";

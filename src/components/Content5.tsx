@@ -13,7 +13,7 @@ const Content5 = () => {
         const content5El = document.querySelector("#content_5") as HTMLDivElement;
         const animation1El = content5El.querySelector("#animation_1") as HTMLDivElement;
         const animation2El = content5El.querySelector("#animation_2") as HTMLDivElement;
-        if (content5El.offsetTop + content5El.offsetHeight / 3 < html.clientHeight + html.scrollTop) {
+        if (content5El.offsetTop + content5El.offsetHeight * 0.5 < html.clientHeight + html.scrollTop) {
             if (windowInnerWidth > 930) {
                 animation1El.style.opacity = "1";
             } else {

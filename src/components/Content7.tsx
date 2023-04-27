@@ -12,7 +12,7 @@ const Content7 = () => {
         const html = document.querySelector("html")!!;
         const content7El = document.querySelector("#content_7") as HTMLDivElement;
         const animation1El = content7El?.querySelector("#animation_1") as HTMLDivElement;
-        if (content7El.offsetTop + content7El.offsetHeight / 3 < html.clientHeight + html.scrollTop) {
+        if (content7El.offsetTop + content7El.offsetHeight * 0.5 < html.clientHeight + html.scrollTop) {
             animation1El.style.opacity = "1";
         } else {
             animation1El.style.opacity = "0";
