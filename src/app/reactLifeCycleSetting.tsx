@@ -19,7 +19,7 @@ export default function ReactLifeCycleSetting({ children }: Props) {
         document.querySelector("html")!!.scrollTo({ top: 0, behavior: "auto" });
         setWindowInnerWidth(window.innerWidth);
         (async () => {
-            await delay(5500);
+            await delay(6200);
             setLoading(false);
             setOpenImageSwiper(true);
             document.querySelector("html")!!.style.overflowY = "scroll";
