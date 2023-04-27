@@ -63,19 +63,18 @@ const Content7 = () => {
             </div>
             <div
                 id="animation_1"
-                className="opacity-0"
+                className={`opacity-0 ${windowInnerWidth > 930 ? "absolute" : "static"}`}
                 style={Object.assign(
                     { transition: "opacity 3s" },
                     windowInnerWidth > 930
                         ? {
-                            position: 'absolute',
                               top: 0,
                               left: "auto",
                               bottom: "auto",
                               right: "50%",
                               marginRight: -483,
                           }
-                        : { position: 'static', top: 0, bottom: 0, right: "auto", width: "100%" }
+                        : { top: 0, bottom: 0, right: "auto", width: "100%" }
                 )}
             >
                 {windowInnerWidth > 930 ? (
