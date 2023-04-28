@@ -16,10 +16,12 @@ export default function ReactLifeCycleSetting({ children }: Props) {
     const setOpenImageSwiper = useSetRecoilState(openImageSwiperRecoil);
 
     useEffect(() => {
-        document.querySelector("html")!!.scrollTo({ top: 0, behavior: "auto" });
         setWindowInnerWidth(window.innerWidth);
+
         (async () => {
-            await delay(6200);
+            await delay(3000);
+            document.querySelector("html")!!.scrollTo({ top: 0, behavior: "auto" });
+            await delay(3200);
             setLoading(false);
             setOpenImageSwiper(true);
             document.querySelector("html")!!.style.overflowY = "scroll";
